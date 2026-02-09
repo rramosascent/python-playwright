@@ -6,6 +6,7 @@ minversion = "11.0"
 #addopts = "-ra -q --cov=my_package"
 
 # Defines where to look for tests
+testpath = ["src"]
 include = [
     "training"
 ]
