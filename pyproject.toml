@@ -1,0 +1,19 @@
+[tool.pytest.ini_options]
+# Specifies the minimum version of pytest required
+minversion = "7.0"
+
+# Adds command line options for every run
+#addopts = "-ra -q --cov=my_package"
+
+# Defines where to look for tests
+testpaths = [
+    "training"
+]
+
+# Configures how to find test files/functions
+python_files = "test_*.py"
+python_classes = "Test"
+python_functions = "test_*"
+
+# Ensures specific directories are ignored
+norecursedirs = [".git", "build", "dist"]
