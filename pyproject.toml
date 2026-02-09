@@ -1,6 +1,6 @@
 [tool.pytest.ini_options]
 # Specifies the minimum version of pytest required
-minversion = "7.0"
+minversion = "11.0"
 
 # Adds command line options for every run
 #addopts = "-ra -q --cov=my_package"
