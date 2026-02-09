@@ -1,0 +1,113 @@
+{
+    "test_data_01": {
+        "login": {
+            "link_login": [
+                1,
+                "url"
+            ],
+            "user_name": [
+                3,
+                "001"
+            ],
+            "password": [
+                3,
+                "001"
+            ]
+        },
+        "create_ecp_consumption": {
+            "declaration": [
+                2,
+                "Consumption",
+                "4001000312"
+            ],
+            "ecp_year": [
+                3,
+                "2025"
+            ],
+            "ecp_port_code": [
+                3,
+                "P01"
+            ],
+            "ecp_e_number": [
+                3,
+                "000312",
+                "R#FGL-000312"
+            ],
+            "registry_num": [
+                2,
+                "NJK0001-25"
+            ],
+            "bl_number": [
+                2,
+                "ANTL000312"
+            ],
+            "consignee_rep": [
+                2,
+                "CONSIGNEE REP"
+            ],
+            "consignee_rep_des": [
+                2,
+                "REP DESIGNATION"
+            ],
+            "consignee_rep_con": [
+                3,
+                "+63-99999999999"
+            ],
+            "consignee_rep_tin": [
+                3,
+                "123888888888",
+                "TOYOTA MOTORS CORPORATION"
+            ],
+            "transaction_type": [
+                2,
+                "CBU"
+            ],
+            "business_id": [
+                2,
+                "MAID-22-0004739"
+            ],
+            "remarks": [
+                2,
+                "SDFASDFASDF"
+            ],
+            "total_gross_weight": [
+                2,
+                "2000"
+            ],
+            "total_net_weight": [
+                2,
+                "2000"
+            ]
+        },
+        "add_ecp_documents": {
+            "ecp_doc_file": [
+                3,
+                "C:\\Users\\ASCENT\\Downloads\\SystemFlow (3).PDF"
+            ]
+        },
+        "add_ecp_details": {
+            "ecp_det_file": [
+                3,
+                "C:\\Users\\ASCENT\\Documents\\GitHub\\python-playwright\\pythonProject\\testcases\\ecp\\file_uploads\\CBU_ - Test ECP_1.xlsx"
+            ]
+        },
+        "examiner_verify_all": {
+            "link_login": [
+                1,
+                "url"
+            ],
+            "user_name": [
+                3,
+                "examiner_1"
+            ],
+            "password": [
+                3,
+                "examiner_1"
+            ],
+            "open_transaction": [
+                2,
+                "2025P01C000312"
+            ]
+        }
+    }
+}

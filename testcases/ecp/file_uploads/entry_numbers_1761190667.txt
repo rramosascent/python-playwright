@@ -1,0 +1,24 @@
+{
+    "P02A": {
+        "counter": 101,
+        "dec_ref": "4000",
+        "bl": "ANTL",
+        "receipt": "R#FGK-",
+        "registry_num": "NJK0001-25",
+        "cbu_engine": "TTJKHGAS-X112NM",
+        "cbu_chassis": "GBVCJHDGHAH-U124BN",
+        "cbu_vin": "FRACTHDGHAH-U124BN",
+        "year": "2025"
+    },
+    "P01": {
+        "counter": 314,
+        "dec_ref": "4001",
+        "bl": "ANTL",
+        "receipt": "R#FGL-",
+        "registry_num": "NJK0001-25",
+        "cbu_engine": "TTJKHGAS-X112NM",
+        "cbu_chassis": "GBVCJHDGHAH-X124BN",
+        "cbu_vin": "FRACTHDGHAH-X124BN",
+        "year": "2025"
+    }
+}

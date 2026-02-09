@@ -1,0 +1,299 @@
+{
+    "test_data_01": {
+        "login": {
+            "link_login": [
+                "open_url",
+                "url"
+            ],
+            "privacy_policy": [
+                "get_by_role_name",
+                "checkbox",
+                "I agree"
+            ],
+            "privacy_pbutton": [
+                "get_by_role_name",
+                "button",
+                "Proceed"
+            ],
+            "user_name": [
+                "get_by_role_name",
+                "textbox_a",
+                "Enter your email or username",
+                "001"
+            ],
+            "password": [
+                "get_by_role_name",
+                "textbox_b",
+                "Password",
+                "001"
+            ],
+            "btn_sign_in": [
+                "get_by_role_name",
+                "button",
+                "SIGN IN"
+            ]
+        },
+        "verify_land_page": {
+            "verify_i_ecp_logo": [
+                "get_by_role_name",
+                "link",
+                "logo eCP"
+            ],
+            "verify_i_ecp": [
+                "get_by_location_con_text",
+                "#layout-menu",
+                "eCP"
+            ],
+            "verify_i_loi": [
+                "get_by_location_con_text",
+                "#layout-menu",
+                "List of Importer"
+            ],
+            "verify_i_myapps": [
+                "get_by_location_con_text",
+                "#layout-menu",
+                "My Applications"
+            ],
+            "verify_i_lofapps": [
+                "get_by_location_con_text",
+                "h3",
+                "List of Applications"
+            ]
+        },
+        "create_ecp_consumption": {
+            "link_ecp": [
+                "get_by_role_name",
+                "link",
+                "\uea3c eCP"
+            ],
+            "declaration": [
+                "get_by_location_option_select",
+                "#locatorType",
+                "Consumption",
+                "4001000288"
+            ],
+            "ecp_year": [
+                "get_by_role_name",
+                "textbox_a",
+                "Entry Year",
+                "2025"
+            ],
+            "ecp_port_code": [
+                "get_by_role_name",
+                "textbox_b",
+                "Port Code",
+                "P01"
+            ],
+            "ecp_e_number": [
+                "get_by_role_name",
+                "textbox_b",
+                "Entry Number",
+                "000288",
+                "R#FGL-000288"
+            ],
+            "registry_num": [
+                "get_by_location_fill_a",
+                "input[name=\"rg_number\"]",
+                "NJK0001-25"
+            ],
+            "bl_number": [
+                "get_by_location_fill_b",
+                "input[name=\"bl_number\"]",
+                "4001000288"
+            ],
+            "consignee_rep": [
+                "get_by_location_fill_b",
+                "#representative",
+                "CONSIGNEE REP"
+            ],
+            "consignee_rep_des": [
+                "get_by_location_fill_b",
+                "#designation",
+                "REP DESIGNATION"
+            ],
+            "consignee_rep_con": [
+                "get_by_role_name",
+                "textbox_b",
+                "+63-",
+                "+63-99999999999"
+            ],
+            "consignee_rep_tin": [
+                "get_by_role_name",
+                "textbox_b",
+                "-000-000-000-000",
+                "123888888888",
+                "TOYOTA MOTORS CORPORATION"
+            ],
+            "business_id": [
+                "get_by_location_fill_b",
+                "#business_id",
+                "MAID-22-0004739"
+            ],
+            "remarks": [
+                "get_by_location_fill_b",
+                "#remarks",
+                "SDFASDFASDF"
+            ],
+            "total_gross_weight": [
+                "get_by_location_fill_b",
+                "#total_gross_weight",
+                "2000"
+            ],
+            "total_net_weight": [
+                "get_by_location_fill_b",
+                "#total_net_weight",
+                "2000"
+            ],
+            "btn_save_ecp": [
+                "get_by_role_name",
+                "button",
+                "Save eCP Info"
+            ],
+            "btn_swal_confirm": [
+                "get_by_role_name",
+                "button",
+                "Yes, submit it!"
+            ],
+            "btn_swal_confirm_ok": [
+                "get_by_role_name",
+                "button",
+                "OK"
+            ]
+        },
+        "verify_sub_sections": {
+            "verify_btn_ecp_sub": [
+                "expect_by_role_name",
+                "button",
+                "SUBMIT"
+            ],
+            "verify_h3_ecp_det": [
+                "expect_by_role_name",
+                "heading",
+                "eCP DETAILS"
+            ],
+            "verify_h3_ecp_docs": [
+                "expect_by_role_name",
+                "heading",
+                "eCP DOCUMENTS"
+            ]
+        },
+        "add_ecp_documents": {
+            "btn_add_ecp_doc": [
+                "get_by_role_name",
+                "button",
+                "\uf055 ADD NEW DOCUMENT"
+            ],
+            "verify_modal_docu": [
+                "get_by_location",
+                "expect",
+                "#modalDOCU"
+            ],
+            "ecp_doc_desc": [
+                "get_by_location_fill_a",
+                "#itemGenDesc",
+                "ECP DOCUMENTS TESTING /n/r ATTACH FILE AND SUBMIT"
+            ],
+            "ecp_doc_file": [
+                "get_by_role_name",
+                "button_set_files",
+                "Choose File",
+                "C:\\Users\\ASCENT\\Downloads\\SystemFlow (3).PDF"
+            ],
+            "btn_add_ecp_doc_save": [
+                "get_by_role_name",
+                "button",
+                "Save"
+            ],
+            "verify_diaglog_confirm": [
+                "expect_by_role_name",
+                "dialog",
+                "Confirmation"
+            ],
+            "btn_add_ecp_doc_save_swal_confirm": [
+                "get_by_role_name",
+                "button",
+                "Yes"
+            ],
+            "verify_diaglog_confirm_ok": [
+                "expect_by_role_name",
+                "dialog",
+                "Great!"
+            ],
+            "btn_add_ecp_doc_save_swal_confirm_ok": [
+                "get_by_role_name",
+                "button",
+                "OK"
+            ]
+        },
+        "add_ecp_details": {
+            "btn_add_ecp_det": [
+                "get_by_role_name",
+                "button",
+                "\ue09a UPLOAD EXCEL FILE"
+            ],
+            "verify_modal_docu": [
+                "get_by_location",
+                "expect",
+                "#modalUPLOADDETAILS"
+            ],
+            "ecp_det_file": [
+                "get_by_role_name",
+                "button_set_files",
+                "Choose File",
+                "C:\\Users\\ASCENT\\Documents\\GitHub\\python-playwright\\pythonProject\\testcases\\ecp\\file_uploads\\CBU_ - Test ECP_1.xlsx"
+            ],
+            "btn_add_ecp_det_save": [
+                "get_by_location",
+                "click",
+                "#btnUploadData"
+            ],
+            "verify_diaglog_confirm": [
+                "expect_by_role_name",
+                "dialog",
+                "Confirmation"
+            ],
+            "btn_add_ecp_det_save_swal_confirm": [
+                "get_by_role_name",
+                "button",
+                "Yes"
+            ],
+            "verify_diaglog_confirm_ok": [
+                "expect_by_role_name",
+                "dialog",
+                "Great!"
+            ],
+            "btn_add_ecp_det_save_swal_confirm_ok": [
+                "get_by_role_name",
+                "button",
+                "OK"
+            ]
+        },
+        "submit_ecp": {
+            "btn_submit": [
+                "get_by_role_name",
+                "button",
+                "SUBMIT"
+            ],
+            "verify_diaglog_confirm": [
+                "expect_locator_filter_has_txt",
+                "div",
+                "\u00d7!Are you sure you want to"
+            ],
+            "btn_submit_swal": [
+                "get_by_role_name",
+                "button",
+                "Yes, submit it!"
+            ],
+            "verify_diaglog_confirm_ok": [
+                "expect_locator_filter_has_txt",
+                "div",
+                "\u00d7 Application tagged as"
+            ],
+            "btn_submit_swal_ok": [
+                "get_by_role_name",
+                "button",
+                "OK"
+            ]
+        }
+    }
+}
