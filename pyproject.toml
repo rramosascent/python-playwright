@@ -6,8 +6,8 @@ minversion = "11.0"
 #addopts = "-ra -q --cov=my_package"
 
 # Defines where to look for tests
-testpaths = [
-    "./training"
+include = [
+    "training"
 ]
 
 # Configures how to find test files/functions
