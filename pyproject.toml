@@ -10,6 +10,10 @@ include = [
     "training"
 ]
 
+exclude = [
+    "framework","testcases"
+]
+
 # Configures how to find test files/functions
 python_files = "test_*.py"
 python_classes = "Test"
