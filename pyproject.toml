@@ -7,7 +7,7 @@ minversion = "11.0"
 
 # Defines where to look for tests
 testpaths = [
-    "training"
+    "./training"
 ]
 
 # Configures how to find test files/functions
