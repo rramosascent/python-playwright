@@ -20,9 +20,9 @@ jobs:
           pip install -r requirements.txt
           pip install -U pytest
           pip install playwright
+          pip install -e .
           pytest install .
           playwright install .
-          pip install -e .
 
       - name: run pytest
         run: python -m pytest
