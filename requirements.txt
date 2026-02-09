@@ -1,0 +1,7 @@
+# Main application dependencies
+requests
+
+# Development and testing dependencies
+pytest
+playwright
+pytest-playwright
