@@ -7,13 +7,13 @@ minversion = "11.0"
 
 # Defines where to look for tests
 #testpath = ["src"]
-#include = [
-#    "training"
-#]
-#
-#exclude = [
-#    "framework","testcases"
-#]
+exclude = [
+    "training"
+]
+
+package = [
+    "framework","testcases"
+]
 
 # Configures how to find test files/functions
 python_files = "test_*.py"
