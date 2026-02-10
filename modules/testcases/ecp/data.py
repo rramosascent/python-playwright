@@ -5,14 +5,14 @@ import time
 
 class DictionaryData:
     def get_data_for_test_a(self, test_case_data):
-        with open(r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\ecp_test_data_1.txt",'r', encoding="utf-8") as file:
+        with open(r"C:\Users\ASCENT\Documents\GitHub\file_uploads\ecp_test_data_1.txt",'r', encoding="utf-8") as file:
             dictionary_extraction = file.read()
         data_for_test = ast.literal_eval(dictionary_extraction)
 
         return data_for_test[test_case_data]
 
     def get_data_for_test(self, test_case_data, test_case_module):
-        with open(r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\ecp_test_data_1.txt",'r', encoding="utf-8") as file:
+        with open(r"C:\Users\ASCENT\Documents\GitHub\file_uploads\ecp_test_data_1.txt",'r', encoding="utf-8") as file:
             dictionary_extraction = file.read()
         data_for_test = ast.literal_eval(dictionary_extraction)
 
@@ -25,14 +25,14 @@ class DictionaryData:
         return get_element_map
 
     def get_data_for_test_all(self):
-        with open(r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\ecp_test_data_1.txt",'r', encoding="utf-8") as file:
+        with open(r"C:\Users\ASCENT\Documents\GitHub\file_uploads\ecp_test_data_1.txt",'r', encoding="utf-8") as file:
             dictionary_extraction = file.read()
         data_for_test = ast.literal_eval(dictionary_extraction)
 
         return data_for_test
 
     def get_entry_num_ref(self):
-        with open(r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\entry_numbers.txt",'r', encoding="utf-8") as file:
+        with open(r"C:\Users\ASCENT\Documents\GitHub\file_uploads\entry_numbers.txt",'r', encoding="utf-8") as file:
             dictionary_extraction = file.read()
 
         data_for_test = ast.literal_eval(dictionary_extraction)
@@ -40,14 +40,14 @@ class DictionaryData:
         return data_for_test
 
     def get_users_for_test(self, test_case_data):
-        with open(r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\user_accounts.txt",'r', encoding="utf-8") as file:
+        with open(r"C:\Users\ASCENT\Documents\GitHub\file_uploads\user_accounts.txt",'r', encoding="utf-8") as file:
             dictionary_extraction = file.read()
         data_for_test = ast.literal_eval(dictionary_extraction)
 
         return data_for_test[test_case_data]
 
     def update_entry_number(self, test_case_data):
-        path = r'C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads'
+        path = r'C:\Users\ASCENT\Documents\GitHub\file_uploads'
         file = r'\entry_numbers'
         extension = 'txt'
         iteration = int(time.time())
@@ -61,7 +61,7 @@ class DictionaryData:
             json.dump(test_case_data, file, indent=4)
 
     def update_ecp_test_data(self, test_case_data):
-        path = r'C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads'
+        path = r'C:\Users\ASCENT\Documents\GitHub\file_uploads'
         file = r'\ecp_test_data_1'
         extension = 'txt'
         iteration = int(time.time())

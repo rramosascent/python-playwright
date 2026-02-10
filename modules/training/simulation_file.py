@@ -7,8 +7,6 @@ my_dict = {
 # print(my_dict.keys())
 # print(my_dict["gen"]["fname"])
 
-# from testcases.ecp.data import DictionaryData
-
 # my_dict = {"brand": "Ford", "model": "Mustang"}
 # ecp_data = DictionaryData()
 #
@@ -28,7 +26,7 @@ my_dict = {
 #
 # data_for_test = {}
 #
-# with open(r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\ecp_test_data.json",'r', encoding="utf-8") as file:
+# with open(r"C:\Users\ASCENT\Documents\GitHub\file_uploads\ecp_test_data.json",'r', encoding="utf-8") as file:
 #     data_for_test = file.read()
 #
 # # print(json.dumps(data_for_test, indent=4))
@@ -40,7 +38,7 @@ my_dict = {
 
 
 #
-# path = r'C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads'
+# path = r'C:\Users\ASCENT\Documents\GitHub\file_uploads'
 # file = 'ecp_test_data'
 # extension = 'txt'
 # itenation = int(time.time())
@@ -53,7 +51,7 @@ my_dict = {
 # data_for_test = ast.literal_eval(dictionary_extraction)
 
 
-# with open(r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\ecp_test_data_1760349178.txt", 'r', encoding="utf-8") as file:
+# with open(r"C:\Users\ASCENT\Documents\GitHub\file_uploads\ecp_test_data_1760349178.txt", 'r', encoding="utf-8") as file:
 #     dictionary_extraction = file.read()
 # data_for_test = ast.literal_eval(dictionary_extraction)
 
@@ -74,7 +72,7 @@ my_dict = {
 # print(f"{path}\{file}_{itenation}.{extension}")
 
 
-# path = r'C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads'
+# path = r'C:\Users\ASCENT\Documents\GitHub\file_uploads'
 # file = 'entry_numbers'
 # extension = 'txt'
 # iteration = int(time.time())
@@ -138,7 +136,7 @@ print(ecp_action_map)
 
 
 #
-# open_excel_path_location = r"C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads\CBU_ - Test ECP_x.xlsx"
+# open_excel_path_location = r"C:\Users\ASCENT\Documents\GitHub\file_uploads\CBU_ - Test ECP_x.xlsx"
 # get_work_book = load_workbook(open_excel_path_location)
 # get_active_sheet = get_work_book.active
 # get_total_rows = get_active_sheet.max_row

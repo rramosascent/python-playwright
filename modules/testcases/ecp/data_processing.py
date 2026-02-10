@@ -1,8 +1,8 @@
-from testcases.ecp.data import DictionaryData
+from modules.testcases.ecp.data import DictionaryData
 from modules.frame_work.framework_package.playwright_fw import FrameWorkPWDriver
 from modules.testcases.ptops.berms_page import TestExecutionClass
 from modules.frame_work.utility.utility_package import UtilityPackage
-from testcases.ecp.api_processing import EcoConsumptionApi
+from modules.testcases.ecp.api_processing import EcoConsumptionApi
 class DataProcessingClass(FrameWorkPWDriver):
     def __init__(self, driver):
         self.driver = driver

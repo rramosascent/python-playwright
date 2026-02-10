@@ -1,5 +1,5 @@
 import requests
-from testcases.ecp.data import DictionaryData
+from modules.testcases.ecp.data import DictionaryData
 # from frame_work.framework_package.playwright_fw import FrameWorkPWDriver
 
 class EcoConsumptionApi():
