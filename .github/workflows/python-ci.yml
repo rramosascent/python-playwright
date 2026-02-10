@@ -28,4 +28,4 @@ jobs:
       - name: run pytest
         run: |
           cd modules
-          python -m pytest
+          python -m pytest --header-opt="headless"
