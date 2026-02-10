@@ -25,4 +25,4 @@ jobs:
           playwright install --with-deps
 
       - name: run pytest
-        run: python /modules -m pytest
+        run: python ./modules -m pytest
