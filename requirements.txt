@@ -1,8 +1,4 @@
 # Main application dependencies
-ast
-os
-json
-time
 requests
 openpyxl
 
