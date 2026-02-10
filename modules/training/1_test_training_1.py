@@ -1,5 +1,5 @@
 import pytest
-from testcases.ecp.data_processing import DataProcessingClass
+from modules.testcases.ecp.data_processing import DataProcessingClass
 
 # @pytest.mark.usefixtures("setup")
 # def test_ecp(playwright: Playwright) -> None:

@@ -1,5 +1,5 @@
-from frame_work.framework_package.playwright_fw import FrameWorkPWDriver
-from frame_work.utility.utility_package import UtilityPackage
+from modules.frame_work.framework_package.playwright_fw import FrameWorkPWDriver
+
 
 class TestExecutionClass(FrameWorkPWDriver):
     def __init__(self, driver):

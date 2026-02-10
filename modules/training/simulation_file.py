@@ -24,7 +24,6 @@ my_dict = {
 # for key in ecp_data.get_data_for_test_all().keys():
 #     print(f"{key}")
 
-import json
 # import ast
 #
 # data_for_test = {}
@@ -39,14 +38,6 @@ import json
 # print(d["test_data_01"]["login"]["link_login"])
 # print(type(d),d)
 
-
-from testcases.ecp.data import DictionaryData
-from frame_work.framework_package.playwright_fw import FrameWorkPWDriver
-import ast
-import os
-import time
-import json
-from openpyxl import load_workbook
 
 #
 # path = r'C:\Users\ASCENT\Documents\GitHub\python-playwright\pythonProject\testcases\ecp\file_uploads'
