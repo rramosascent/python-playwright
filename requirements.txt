@@ -2,6 +2,6 @@
 requests
 
 # Development and testing dependencies
-pytest
-playwright
-pytest-playwright
+# pytest
+# playwright
+# pytest-playwright
