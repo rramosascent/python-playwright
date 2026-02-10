@@ -1,4 +1,9 @@
 # Main application dependencies
-
+ast
+os
+json
+time
+requests
+openpyxl
 
 # Development and testing dependencies
