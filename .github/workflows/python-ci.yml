@@ -19,10 +19,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -U pytest
-          pip install playwright
           pip install -e .
-          pytest install .
-          playwright install .
 
       - name: run pytest
         run: python -m pytest
