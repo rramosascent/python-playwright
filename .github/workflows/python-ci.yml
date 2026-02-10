@@ -22,7 +22,7 @@ jobs:
           pip install -e .
           pip install pytest-playwright
           pip install pytest-playwright playwright -U
-          playwright install
+          playwright install .
           playwright install --with-deps
 
       - name: run pytest

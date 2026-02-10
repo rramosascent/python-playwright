@@ -6,7 +6,7 @@ class TestExecutionClass(FrameWorkPWDriver):
         self.driver = driver
     def page_login_a_user(self, get_data):
         link_creds = {
-            "url": "http://192.168.20.26:82/peza-ed/login",
+            "url": "http://112.199.119.250:96/peza-ed/login",
             "url_1": "http://112.199.119.250:82/ECP/auth/login",
             "001": {"un": 'cgbc', "pw": 'Peza_123'},
             "examiner_1": {"un": 'balahibongpusa', "pw": 'Blitzkri3g!50088'},
