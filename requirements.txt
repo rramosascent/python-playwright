@@ -1,8 +1,4 @@
 # Main application dependencies
-pip
-requests
+
 
 # Development and testing dependencies
-#pytest
-#playwright
-#pytest-playwright
