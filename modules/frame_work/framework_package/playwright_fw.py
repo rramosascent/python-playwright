@@ -1,6 +1,7 @@
 import pytest
 import re
 from playwright.sync_api import Playwright, sync_playwright, expect
+from pathlib import Path
 
 
 class FrameWorkPWDriver:
@@ -30,6 +31,8 @@ class FrameWorkPWDriver:
                 self.get_by_role_combox_select(data_list)
             case 'get_by_text_click':
                 self.get_by_text_click(data_list)
+            case 'get_by_text_set_files':
+                self.get_by_text_set_files(data_list)
             case _:
                 pytest.fail('invalid function')
     def open_url(self, get_by_data):
@@ -46,6 +49,8 @@ class FrameWorkPWDriver:
                 self.driver.locator(get_by_data[2]).click()
             case 'checkbox':
                 self.driver.locator(get_by_data[2]).check()
+            case 'set_input_fules':
+                self.driver.locator(get_by_data[2]).set_input_files(get_by_data[3])
             case _:
                 pytest.fail('invalid option')
     def expect_by_role_name(self, get_by_data):
@@ -73,6 +78,9 @@ class FrameWorkPWDriver:
 
     def get_by_text_click(self, get_by_data):
         self.driver.get_by_text(get_by_data[1]).click()
+    def get_by_text_set_files(self, get_by_data):
+        self.drag_and_drop_file(get_by_data[1], get_by_data[2])
+        # self.driver.get_by_text(get_by_data[1]).set_input_files(get_by_data[2])
 
     def get_by_location_fill_a(self, get_by_data):
         self.driver.locator(get_by_data[1]).click()
@@ -119,4 +127,37 @@ class FrameWorkPWDriver:
             case _:
                 pytest.fail('invalid option')
 
+    def drag_and_drop_file(self, selector: str, file_path: str):
+        """
+        Drag and drop a file onto an element
 
+        Args:
+            page: Playwright page object
+            selector: CSS selector for the drop zone
+            file_path: Path to the file to upload
+        """
+        file_name = Path(file_path).name
+
+        self.driver.evaluate("""
+        ([selector, fileName, filePath]) => {
+            const dropZone = document.querySelector(selector);
+
+            // You can customize this based on your needs
+            const file = new File([''], fileName, {
+                type: 'application/octet-stream'
+            });
+
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+
+            // Trigger drag events
+            ['dragenter', 'dragover', 'drop'].forEach(eventName => {
+                const event = new DragEvent(eventName, {
+                    bubbles: true,
+                    cancelable: true,
+                    dataTransfer: dataTransfer
+                });
+                dropZone.dispatchEvent(event);
+            });
+        }
+        """, [selector, file_name, file_path])

@@ -67,7 +67,12 @@ class TestSuite0001():
             "btn_proposed_project": ["get_by_location", "click", "#btnBusinessProduct"],
             "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PROPOSES PRODUCT ACTIVITY 001"],
             "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
-            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PROPOSE PRODUCT ACTIVITY 001 DESCRIPTION"]
+            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PROPOSE PRODUCT ACTIVITY 001 DESCRIPTION"],
+            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "NEW PRODUCT USES AND APPLICATION 0001"],
+            # "add_proposed_project_permit": ["get_by_text_click", "choose a file"],
+            "file_proposed_project_permit": ["get_by_text_set_files", "#activity_product_img_documentsDropzone", r"Testing_document.png"],
+            # "file_proposed_project_permit": ["get_by_location", "set_input_fules", "#activity_product_img_documentsDropzone", r"C:\Users\ASCENT\Pictures\Testing_document.png"]
+
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
