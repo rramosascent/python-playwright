@@ -62,6 +62,15 @@ class TestSuite0001():
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
+    def test_create_new_berms_company_proposed_project(self) -> None:
+        data_element_action = {
+            "btn_proposed_project": ["get_by_location", "click", "#btnBusinessProduct"],
+            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PROPOSES PRODUCT ACTIVITY 001"],
+            "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
+            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PROPOSE PRODUCT ACTIVITY 001 DESCRIPTION"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
         page = self.driver
         page.wait_for_timeout(10000)
 
