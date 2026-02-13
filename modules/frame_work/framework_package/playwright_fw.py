@@ -33,6 +33,8 @@ class FrameWorkPWDriver:
                 self.get_by_text_click(data_list)
             case 'get_by_text_set_files':
                 self.get_by_text_set_files(data_list)
+            case 'get_by_file_chooser':
+                self.get_by_file_chooser(data_list)
             case _:
                 pytest.fail('invalid function')
     def open_url(self, get_by_data):
@@ -81,6 +83,16 @@ class FrameWorkPWDriver:
     def get_by_text_set_files(self, get_by_data):
         self.drag_and_drop_file(get_by_data[1], get_by_data[2])
         # self.driver.get_by_text(get_by_data[1]).set_input_files(get_by_data[2])
+
+    def get_by_file_chooser(self, get_by_data):
+        # self.driver.file_chooser(get_by_data[1], get_by_data[2])
+
+        with self.driver.expect_file_chooser() as fc_info:
+            self.driver.get_by_text(get_by_data[1]).click()
+
+        file_chooser = fc_info.value
+        file_chooser.set_files(get_by_data[2])
+
 
     def get_by_location_fill_a(self, get_by_data):
         self.driver.locator(get_by_data[1]).click()
