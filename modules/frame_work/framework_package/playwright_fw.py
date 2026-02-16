@@ -35,6 +35,8 @@ class FrameWorkPWDriver:
                 self.get_by_text_set_files(data_list)
             case 'get_by_file_chooser':
                 self.get_by_file_chooser(data_list)
+            case 'get_by_title_click':
+                self.get_by_title_click(data_list)
             case _:
                 pytest.fail('invalid function')
     def open_url(self, get_by_data):
@@ -55,6 +57,8 @@ class FrameWorkPWDriver:
                 self.driver.locator(get_by_data[2]).fill(get_by_data[3])
             case 'set_input_fules':
                 self.driver.locator(get_by_data[2]).set_input_files(get_by_data[3])
+            case 'filter_th_click':
+                self.driver.locator(get_by_data[2]).filter(has_text=get_by_data[3]).nth(get_by_data[4]).click()
             case _:
                 pytest.fail('invalid option')
     def expect_by_role_name(self, get_by_data):
@@ -79,6 +83,10 @@ class FrameWorkPWDriver:
 
         expect(self.driver.get_by_role("option", name=get_by_data[2])).to_be_visible(timeout=10000)
         self.driver.get_by_role("option", name=get_by_data[2]).click()
+
+    def get_by_title_click(self, get_by_data):
+        expect(self.driver.get_by_title(get_by_data[1])).to_be_visible(timeout=10000)
+        self.driver.get_by_title(get_by_data[1]).click()
 
     def get_by_text_click(self, get_by_data):
         self.driver.get_by_text(get_by_data[1]).click()

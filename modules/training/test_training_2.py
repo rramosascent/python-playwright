@@ -90,8 +90,23 @@ class TestSuite0001():
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
+    def test_create_new_berms_stockholder_reg(self) -> None:
+        data_element_action = {
+            "txt_proposed_stockholder_type": ["get_by_role_name", "radio_b", "Person"],
+            "txt_proposed_stockholder_item": ["get_by_location","filter_th_click","#stockholderWrapper div","Not Applicable","1"],
+            "btn_proposed_principal_officer_add": ["get_by_title_click","Add Principal Officer"],
+            "opt_proporse_principal_officer_salutation": ["get_by_role_combox_select","#select2-officerSalutationId-container","Mr."],
+            "txt_proporse_principal_officer_fname": ["get_by_role_name", "textbox_b", "* First Name","PRNCIPAL FNAME"],
+            "txt_proporse_principal_officer_mname": ["get_by_role_name", "textbox_b", "Middle Name (Optional)",""],
+            "txt_proporse_principal_officer_lname": ["get_by_role_name", "textbox_b", "* Last Name", "PRINCIPAL LNAME"],
+            "txt_proporse_principal_officer_position": ["get_by_location", "fill", "#officerPosition","PRESIDENT"],
+            "btn_proposed_principal_officer_add_proceed": ["get_by_role_name", "button"," Add"],
+            "btn_proposed_principal_officer_save_next": ["get_by_role_name", "button", "Save and Proceed"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
         page = self.driver
-        page.wait_for_timeout(60000)
+        page.wait_for_timeout(120000)
 
         # data_element_action = {
         #     "opt_app_type": ["get_by_location_option_select", "#applicationTypeId", "value:'2'"]
