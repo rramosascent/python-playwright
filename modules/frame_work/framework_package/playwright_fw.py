@@ -51,6 +51,8 @@ class FrameWorkPWDriver:
                 self.driver.locator(get_by_data[2]).click()
             case 'checkbox':
                 self.driver.locator(get_by_data[2]).check()
+            case 'fill':
+                self.driver.locator(get_by_data[2]).fill(get_by_data[3])
             case 'set_input_fules':
                 self.driver.locator(get_by_data[2]).set_input_files(get_by_data[3])
             case _:
@@ -133,6 +135,9 @@ class FrameWorkPWDriver:
             case 'row_item':
                 expect(self.driver.get_by_role("row", name=get_by_data[2]).get_by_role("link")).to_be_visible()
                 self.driver.get_by_role("row", name=get_by_data[2]).get_by_role("link").click()
+            case 'row_dp':
+                expect(self.driver.get_by_role("row", name=get_by_data[2]).get_by_placeholder(get_by_data[3])).to_be_visible()
+                self.driver.get_by_role("row", name=get_by_data[2]).get_by_placeholder(get_by_data[3]).fill(get_by_data[4])
             case 'radio_b':
                 expect(self.driver.get_by_role("radio", name=get_by_data[2])).to_be_visible()
                 self.driver.get_by_role("radio", name=get_by_data[2]).click()

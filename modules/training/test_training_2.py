@@ -69,15 +69,29 @@ class TestSuite0001():
             "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
             "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PROPOSE PRODUCT ACTIVITY 001 DESCRIPTION"],
             "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "NEW PRODUCT USES AND APPLICATION 0001"],
-            "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"./Testing_document.png"],
-            # "file_proposed_project_permit": ["get_by_file_chooser", "#activity_product_img_documentsDropzone", r"Testing_document.png"],
-            # "file_proposed_project_permit": ["get_by_location", "set_input_fules", "#activity_product_img_documentsDropzone", r"C:\Users\ASCENT\Pictures\Testing_document.png"]
+            "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
+            "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
+
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_existing_business_reg(self) -> None:
+        data_element_action = {
+            "date_proposed_registration_date": ["get_by_role_name", "row_dp", "Securities & Exchange","DD-MMM-YYYY","2016-01-11"],
+            "txt_proposed_registration_no": ["get_by_location", "fill", "input[name=\"businessRegInfoAppsBean[0].reg_no\"]","REG-2025-001"],
+            "txt_proposed_sec_primary_purpose": ["get_by_role_name", "textbox_b", "Sec Primary Purpose","SEC PRIMARY PURPOSE 00"],
+            "txt_proposed_authorized_amount": ["get_by_role_name", "textbox_b", "Authorized Amount (PHP)","99999999999"],
+            "txt_proposed_subscribed_amount": ["get_by_role_name", "textbox_b", "Subscribe Amount (PHP)","99999999999"],
+            "txt_proposed_paid-up_amount": ["get_by_role_name", "textbox_b", "* Paid-up Amount (PHP):","99999999999"],
+            "btn_proposed_existing_registration_next": ["get_by_role_name", "button", "Save and Proceed"]
+            # "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
+            # "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
 
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
         page = self.driver
-        page.wait_for_timeout(10000)
+        page.wait_for_timeout(60000)
 
         # data_element_action = {
         #     "opt_app_type": ["get_by_location_option_select", "#applicationTypeId", "value:'2'"]
