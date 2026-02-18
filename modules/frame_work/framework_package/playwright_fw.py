@@ -2,6 +2,7 @@ import pytest
 import re
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pathlib import Path
+from modules.frame_work.utility.utility_package import UtilityPackage
 
 
 class FrameWorkPWDriver:
@@ -37,6 +38,8 @@ class FrameWorkPWDriver:
                 self.get_by_file_chooser(data_list)
             case 'get_by_title_click':
                 self.get_by_title_click(data_list)
+            case 'select_date_picker_v1':
+                self.select_date_picker_v1(data_list)
             case _:
                 pytest.fail('invalid function')
     def open_url(self, get_by_data):
@@ -54,8 +57,14 @@ class FrameWorkPWDriver:
             case 'checkbox':
                 self.driver.locator(get_by_data[2]).check()
             case 'fill':
+                # expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
+                # self.driver.locator(get_by_data[2]).count()
                 self.driver.locator(get_by_data[2]).fill(get_by_data[3])
-            case 'set_input_fules':
+            case 'fill2':
+                # expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
+                self.driver.locator(get_by_data[2]).locator('.numInput cur-year').fill(get_by_data[3])
+                # self.driver.locator(get_by_data[2]).fill(get_by_data[3])
+            case 'set_input_fIles':
                 self.driver.locator(get_by_data[2]).set_input_files(get_by_data[3])
             case 'filter_th_click':
                 self.driver.locator(get_by_data[2]).filter(has_text=get_by_data[3]).nth(get_by_data[4]).click()
@@ -149,9 +158,21 @@ class FrameWorkPWDriver:
             case 'radio_b':
                 expect(self.driver.get_by_role("radio", name=get_by_data[2])).to_be_visible()
                 self.driver.get_by_role("radio", name=get_by_data[2]).click()
+            case 'spinbutton':
+                expect(self.driver.get_by_role("spinbutton", name=get_by_data[2])).to_be_visible()
+                self.driver.get_by_role("spinbutton", name=get_by_data[2]).fill(get_by_data[3])
+                self.driver.get_by_role("spinbutton", name=get_by_data[2]).press("Tab")
             case _:
                 pytest.fail('invalid option')
+    def select_date_picker_v1(self, get_by_data):
+        self.driver.locator(get_by_data[1]).click()
+        get_by_data_date = UtilityPackage().date_picker_data_strptime(get_by_data[2])
+        expect(self.driver.get_by_role("spinbutton", name="Year")).to_be_visible()
+        self.driver.get_by_role("spinbutton", name="Year").fill(get_by_data_date[0])
 
+        get_month_num = UtilityPackage().month_number_conversion_xxx(get_by_data_date[1])
+        print(get_month_num)
+        self.driver.locator(".flatpickr-monthSelect-month").filter(has_text=get_month_num).filter(visible=True).click()
     def drag_and_drop_file(self, selector: str, file_path: str):
         """
         Drag and drop a file onto an element
