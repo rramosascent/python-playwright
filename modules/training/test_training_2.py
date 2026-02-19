@@ -107,12 +107,12 @@ class TestSuite0001():
 
     def test_create_new_berms_manpower_timetable(self) -> None:
         data_element_action = {
-            "dp_timetable_bld_construction_fr": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/input[2]","11/1/2028"],
-            "dp_timetable_bld_construction_to": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[2]/input[2]","9/1/2030"],
-            "dp_timetable_bld_procurement_fr": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[1]/input[2]","2/1/2028"],
-            "dp_timetable_bld_procurement_to": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/input[2]","1/1/2030"],
-            "dp_timetable_bld_installation_fr": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[1]/input[2]","10/1/2028"],
-            "dp_timetable_bld_installation_to": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[2]/input[2]","8/1/2030"]
+            "dp_timetable_bld_construction_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/input[2])","11/1/2028"],
+            "dp_timetable_bld_construction_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[2]/input[2])","9/1/2030"],
+            "dp_timetable_bld_procurement_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[1]/input[2])","2/1/2028"],
+            "dp_timetable_bld_procurement_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/input[2])","1/1/2030"],
+            "dp_timetable_bld_installation_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[1]/input[2])","10/1/2028"],
+            "dp_timetable_bld_installation_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[2]/input[2])","8/1/2030"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
