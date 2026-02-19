@@ -114,7 +114,18 @@ class TestSuite0001():
             "dp_timetable_bld_installation_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[1]/input[2])","10/1/2028"],
             "dp_timetable_bld_installation_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[2]/input[2])","8/1/2030"],
             "dp_timetable_bld_hiring_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[2]/div/div/div[2]/div[1]/input[2])","12/1/2028"],
-            "dp_timetable_bld_hiring_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/input[2])","11/1/2030"]
+            "dp_timetable_bld_hiring_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/input[2])","11/1/2030"],
+            "dp_timetable_bld_start_commercial": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[3]/div/div/div/div[2]/div/input[2])","2/1/2031"],
+            "txt_timetable_bld_service0": ["get_by_location", "fill", "#servicePersonnelCount0", "10"],
+            "txt_timetable_bld_service1": ["get_by_location", "fill", "#servicePersonnelCount1", "20"],
+            "txt_timetable_bld_service2": ["get_by_location", "fill", "#servicePersonnelCount2", "100"],
+            "txt_timetable_bld_indirect0": ["get_by_location", "fill", "#servicePersonnelCount0", "10"],
+            "txt_timetable_bld_indirect1": ["get_by_location", "fill", "#servicePersonnelCount1", "20"],
+            "txt_timetable_bld_indirect2": ["get_by_location", "fill", "#servicePersonnelCount2", "100"],
+            "txt_timetable_bld_admin0": ["get_by_location", "fill", "#adminPersonnelCount0", "100"],
+            "txt_timetable_bld_admin1": ["get_by_location", "fill", "#adminPersonnelCount1", "100"],
+            "txt_timetable_bld_admin2": ["get_by_location", "fill", "#adminPersonnelCount1", "100"],
+            "txt_timetable_bld_save_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
