@@ -27,9 +27,9 @@ def setup(request, playwright: Playwright):
                 case 'webkit':
                     browser = playwright.webkit.launch(headless=False)
                 case _:
-                    browser = playwright.chromium.launch(headless=False)
+                    browser = playwright.chromium.launch(headless=False,args=["--start-maximized"])
 
-    driver = browser.new_page()
+    driver = browser.new_page(no_viewport=True)
     # driver.goto("http://112.199.119.250:82/ECP/auth/login")
     request.cls.driver = driver
     yield

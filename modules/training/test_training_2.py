@@ -107,14 +107,17 @@ class TestSuite0001():
 
     def test_create_new_berms_manpower_timetable(self) -> None:
         data_element_action = {
-            "txt_timetable_bld_construction": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/input[2]","11/1/2028" ],
-
-            # "cmb_txt_timetable_bld_construction_from": ["get_by_location", "fill", "//html/body/div[4]/div[1]/div/div/div/input","2028"]
+            "dp_timetable_bld_construction_fr": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/input[2]","11/1/2028"],
+            "dp_timetable_bld_construction_to": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[2]/input[2]","9/1/2030"],
+            "dp_timetable_bld_procurement_fr": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[1]/input[2]","2/1/2028"],
+            "dp_timetable_bld_procurement_to": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/input[2]","1/1/2030"],
+            "dp_timetable_bld_installation_fr": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[1]/input[2]","10/1/2028"],
+            "dp_timetable_bld_installation_to": ["select_date_picker_v1", "//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[2]/input[2]","8/1/2030"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
         page = self.driver
-        page.wait_for_timeout(6000)
+        page.wait_for_timeout(60000)
 
         # data_element_action = {
         #     "opt_app_type": ["get_by_location_option_select", "#applicationTypeId", "value:'2'"]

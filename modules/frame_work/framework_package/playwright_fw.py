@@ -165,14 +165,32 @@ class FrameWorkPWDriver:
             case _:
                 pytest.fail('invalid option')
     def select_date_picker_v1(self, get_by_data):
+        div_class = "flatpickr-calendar animate flatpickr-monthSelect-theme-light open"
+        open_date_picker_xpath = f"xpath=//div[contains(@class, \"{div_class}\")]"
+
+
         self.driver.locator(get_by_data[1]).click()
         get_by_data_date = UtilityPackage().date_picker_data_strptime(get_by_data[2])
-        expect(self.driver.get_by_role("spinbutton", name="Year")).to_be_visible()
-        self.driver.get_by_role("spinbutton", name="Year").fill(get_by_data_date[0])
-
         get_month_num = UtilityPackage().month_number_conversion_xxx(get_by_data_date[1])
-        print(get_month_num)
-        self.driver.locator(".flatpickr-monthSelect-month").filter(has_text=get_month_num).filter(visible=True).click()
+
+        expect(self.driver.locator(open_date_picker_xpath).locator("//div[1]/div/div/div/input").filter(visible=True)).to_be_visible(timeout=10000)
+        self.driver.locator(open_date_picker_xpath).locator("//div[1]/div/div/div/input").filter(visible=True).click()
+        self.driver.locator(open_date_picker_xpath).locator("//div[1]/div/div/div/input").filter(visible=True).press_sequentially(get_by_data_date[0])
+        self.driver.locator(open_date_picker_xpath).locator("//div[1]/div/div/div/input").filter(visible=True).press("Tab")
+
+        # expect(self.driver.get_by_role("spinbutton", name="Year")).to_be_visible(timeout=10000)
+        # self.driver.get_by_role("spinbutton", name="Year").click()
+        # self.driver.get_by_role("spinbutton", name="Year").press_sequentially(get_by_data_date[0])
+        # self.driver.get_by_role("spinbutton", name="Year").press("Tab")
+
+        # expect(self.driver.get_by_label(get_by_data_date[3])).to_be_visible(timeout=10000)
+        # self.driver.get_by_label(get_by_data_date[3]).click()
+
+        expect(self.driver.locator(open_date_picker_xpath).locator("//div[2]/div/div/span").filter(has_text=get_month_num).filter(visible=True)).to_be_visible(timeout=10000)
+        self.driver.locator(open_date_picker_xpath).locator("//div[2]/div/div/span").filter(has_text=get_month_num).filter(visible=True).click()
+
+        # locator_partial_class = page.locator('xpath=//*[contains(@class, "my-class") and contains(text(), "Welcome")]')
+
     def drag_and_drop_file(self, selector: str, file_path: str):
         """
         Drag and drop a file onto an element
