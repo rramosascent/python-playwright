@@ -69,7 +69,8 @@ class TestSuite0001():
             "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
             "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PROPOSE PRODUCT ACTIVITY 001 DESCRIPTION"],
             "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "NEW PRODUCT USES AND APPLICATION 0001"],
-            "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
+            # "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
+            "add_proposed_project_permit": ["get_by_file_chooser", "#activity_product_img_documentsDropzone", r"Testing_document.png"],
             "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
 
         }
@@ -119,13 +120,21 @@ class TestSuite0001():
             "txt_timetable_bld_service0": ["get_by_location", "fill", "#servicePersonnelCount0", "10"],
             "txt_timetable_bld_service1": ["get_by_location", "fill", "#servicePersonnelCount1", "20"],
             "txt_timetable_bld_service2": ["get_by_location", "fill", "#servicePersonnelCount2", "100"],
-            "txt_timetable_bld_indirect0": ["get_by_location", "fill", "#servicePersonnelCount0", "10"],
-            "txt_timetable_bld_indirect1": ["get_by_location", "fill", "#servicePersonnelCount1", "20"],
-            "txt_timetable_bld_indirect2": ["get_by_location", "fill", "#servicePersonnelCount2", "100"],
+            "txt_timetable_bld_indirect0": ["get_by_location", "fill", "#indirectPersonnelCount0", "10"],
+            "txt_timetable_bld_indirect1": ["get_by_location", "fill", "#indirectPersonnelCount1", "20"],
+            "txt_timetable_bld_indirect2": ["get_by_location", "fill", "#indirectPersonnelCount2", "100"],
             "txt_timetable_bld_admin0": ["get_by_location", "fill", "#adminPersonnelCount0", "100"],
             "txt_timetable_bld_admin1": ["get_by_location", "fill", "#adminPersonnelCount1", "100"],
-            "txt_timetable_bld_admin2": ["get_by_location", "fill", "#adminPersonnelCount1", "100"],
+            "txt_timetable_bld_admin2": ["get_by_location", "fill", "#adminPersonnelCount2", "100"],
             "txt_timetable_bld_save_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_manu_servi_flow(self) -> None:
+        data_element_action = {
+            "txt_company_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 001"],
+            # "add_diagram_process_flow": ["get_by_file_chooser", "Click Here", r"Testing_document.png"],
+            "add_diagram_process_flow": ["get_by_file_chooser", "#addtlInfo_supporting_documentsDropzone", r"Testing_document.png"],
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 

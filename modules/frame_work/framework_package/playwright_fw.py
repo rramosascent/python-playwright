@@ -107,7 +107,7 @@ class FrameWorkPWDriver:
         # self.driver.file_chooser(get_by_data[1], get_by_data[2])
 
         with self.driver.expect_file_chooser() as fc_info:
-            self.driver.get_by_text(get_by_data[1]).click()
+            self.driver.locator(get_by_data[1]).filter(visible=True).click()
 
         file_chooser = fc_info.value
         file_chooser.set_files(get_by_data[2])
