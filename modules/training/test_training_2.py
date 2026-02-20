@@ -44,7 +44,7 @@ class TestSuite0001():
         data_element_action = {
             "opt_app_type": ["get_by_role_combox_select", "#select2-applicationTypeId-container","NEW ECOZONE ENTERPRISE"],
             "rbtn_type_ezone": ["get_by_role_name","radio_b", "Export Enterprise"],
-            "opt_psic_classification": ["get_by_role_combox_select", "#select2-sectionCodeId-container","Accommodation and Food"],
+            "opt_psic_classification": ["get_by_role_combox_select", "#select2-sectionCodeId-container","Accommodation and Food Service Activities"],
             "opt_psic_division": ["get_by_role_combox_select", "#select2-divisionCodeId-container","[56] FOOD AND BEVERAGE SERVICE ACTIVITIES"],
             "opt_psic_group": ["get_by_role_combox_select", "#select2-groupCodeId-container","[563] Beverage serving activities"],
             "opt_psic_class": ["get_by_role_combox_select", "#select2-classesCodeId-container","[5630] Beverage serving activities"],
@@ -170,6 +170,31 @@ class TestSuite0001():
             "txt_schedule_hours_per_shift": ["get_by_location", "fill", "#prodSchedHourShifts0", "21"],
             "txt_schedule_days_per_monthj": ["get_by_location", "fill", "#prodSchedDaysMonth0", "21"],
             "btn_m_rp_p_schedule_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_areas_utilities_w_disposal(self) -> None:
+        data_element_action = {
+            "txt_areas_utilities_w_disposal_owner_area": ["get_by_location", "fill", "#total_area_sqm", "5765"],
+            "opt_areas_utilities_w_disposal_location": ["get_by_role_combox_select", "#select2-zoneId-container","[2CYV] [24]7 PLAZA"],
+            "opt_areas_utilities_w_disposal_region": ["get_by_role_combox_select", "#select2-zone_addressRegionId-container","NATIONAL CAPITAL REGION (NCR)"],
+            "opt_areas_utilities_w_disposal_province": ["get_by_role_combox_select", "#select2-zone_addressProvinceId-container","METRO MANILA"],
+            "opt_areas_utilities_w_disposal_city": ["get_by_role_combox_select", "#select2-zone_addressCityId-container","CALOOCAN CITY"],
+            "opt_areas_utilities_w_disposal_barangay": ["get_by_role_combox_select", "#select2-zone_addressBarangayId-container","BARANGAY 1"],
+            "txt_areas_utilities_w_disposal_street": ["get_by_role_name", "textbox_b", "Street Name","STREET NAME TEST INPUT 001"],
+            "txt_areas_utilities_w_disposal_unitowner_Fname": ["get_by_location", "fill", "#unitOwnerFirstname", "UNIT OWNER FNAME 001"],
+            "txt_areas_utilities_w_disposal_unitowner_lname": ["get_by_location", "fill", "#unitOwnerLastname", "UNIT OWNER LNAME 001"],
+            "txt_areas_utilities_w_disposal_lotowner_fname": ["get_by_location", "fill", "#lotOwnerFirstname", "LOT OWNER LNAME 001"],
+            "txt_areas_utilities_w_disposal_lotowner_lname": ["get_by_location", "fill", "#lotOwnerLastname", "LOT OWNER LNAME 001"],
+            "txt_areas_utilities_w_disposal_lessor_fname": ["get_by_location", "fill", "#lessorFirstname", "LESSOR LNAME 001"],
+            "txt_areas_utilities_w_disposal_lessor_lname": ["get_by_location", "fill", "#lessorLastname", "LESSOR LNAME 001"],
+            "txt_areas_utilities_w_disposal_water_yr_req": ["get_by_location", "fill", "#water_yr_req", "100"],
+            "txt_areas_utilities_w_disposal_electric_yr_req": ["get_by_location", "fill", "#electric_yr_req", "999456"],
+            "txt_areas_utilities_w_disposal_waste_d_desc": ["get_by_location", "fill", "#waste_disposal_desc", "WASTE DISPOSAL DESCRIPTION"],
+            "txt_areas_utilities_w_disposal_waste_d_method": ["get_by_location", "fill", "#waste_disposal_method_desc", "DISCUSSION OF METHODS"],
+            "add_areas_utilities_w_disposal_waste_products": ["get_by_file_chooser", "#activity_wasteproducts_supporting_documentsDropzone",r"Testing_document.png"],
+            "add_areas_utilities_w_disposal_generated_waste": ["get_by_file_chooser", "#activity_generatedwaste_supporting_documentsDropzone",r"Testing_document.png"],
+            # "btn_areas_utilities_w_disposal_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 

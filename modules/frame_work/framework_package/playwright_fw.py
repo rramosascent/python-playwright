@@ -90,8 +90,8 @@ class FrameWorkPWDriver:
             expect(self.driver.get_by_role("combobox", name=combobox_text)).to_be_visible(timeout=10000)
             self.driver.get_by_role("combobox", name=combobox_text).click()
 
-        expect(self.driver.get_by_role("option", name=get_by_data[2])).to_be_visible(timeout=10000)
-        self.driver.get_by_role("option", name=get_by_data[2]).click()
+        expect(self.driver.get_by_role("option", name=get_by_data[2], exact=True)).to_be_visible(timeout=10000)
+        self.driver.get_by_role("option", name=get_by_data[2], exact=True).click()
 
     def get_by_title_click(self, get_by_data):
         expect(self.driver.get_by_title(get_by_data[1])).to_be_visible(timeout=10000)
