@@ -167,7 +167,7 @@ class TestSuite0001():
     def test_create_new_berms_m_rp_p_schedule_add_schedule(self) -> None:
         data_element_action = {
             "txt_scheudle_shifts": ["get_by_location", "fill", "#prodSchedShifts0", "3"],
-            "txt_schedule_hours_per_shift": ["get_by_location", "fill", "#prodSchedHourShifts0", "21"],
+            "txt_schedule_hours_per_shift": ["get_by_location", "fill", "#prodSchedHourShifts0", "8"],
             "txt_schedule_days_per_monthj": ["get_by_location", "fill", "#prodSchedDaysMonth0", "21"],
             "btn_m_rp_p_schedule_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
@@ -182,19 +182,19 @@ class TestSuite0001():
             "opt_areas_utilities_w_disposal_city": ["get_by_role_combox_select", "#select2-zone_addressCityId-container","CALOOCAN CITY"],
             "opt_areas_utilities_w_disposal_barangay": ["get_by_role_combox_select", "#select2-zone_addressBarangayId-container","BARANGAY 1"],
             "txt_areas_utilities_w_disposal_street": ["get_by_role_name", "textbox_b", "Street Name","STREET NAME TEST INPUT 001"],
-            "txt_areas_utilities_w_disposal_unitowner_Fname": ["get_by_location", "fill", "#unitOwnerFirstname", "UNIT OWNER FNAME 001"],
-            "txt_areas_utilities_w_disposal_unitowner_lname": ["get_by_location", "fill", "#unitOwnerLastname", "UNIT OWNER LNAME 001"],
-            "txt_areas_utilities_w_disposal_lotowner_fname": ["get_by_location", "fill", "#lotOwnerFirstname", "LOT OWNER LNAME 001"],
-            "txt_areas_utilities_w_disposal_lotowner_lname": ["get_by_location", "fill", "#lotOwnerLastname", "LOT OWNER LNAME 001"],
-            "txt_areas_utilities_w_disposal_lessor_fname": ["get_by_location", "fill", "#lessorFirstname", "LESSOR LNAME 001"],
-            "txt_areas_utilities_w_disposal_lessor_lname": ["get_by_location", "fill", "#lessorLastname", "LESSOR LNAME 001"],
+            "txt_areas_utilities_w_disposal_unitowner_Fname": ["get_by_location", "fill", "#unitOwnerFirstname", "UNIT OWNER FNAME"],
+            "txt_areas_utilities_w_disposal_unitowner_lname": ["get_by_location", "fill", "#unitOwnerLastname", "UNIT OWNER LNAME"],
+            "txt_areas_utilities_w_disposal_lotowner_fname": ["get_by_location", "fill", "#lotOwnerFirstname", "LOT OWNER LNAME"],
+            "txt_areas_utilities_w_disposal_lotowner_lname": ["get_by_location", "fill", "#lotOwnerLastname", "LOT OWNER LNAME"],
+            "txt_areas_utilities_w_disposal_lessor_fname": ["get_by_location", "fill", "#lessorFirstname", "LESSOR LNAME"],
+            "txt_areas_utilities_w_disposal_lessor_lname": ["get_by_location", "fill", "#lessorLastname", "LESSOR LNAME"],
             "txt_areas_utilities_w_disposal_water_yr_req": ["get_by_location", "fill", "#water_yr_req", "100"],
             "txt_areas_utilities_w_disposal_electric_yr_req": ["get_by_location", "fill", "#electric_yr_req", "999456"],
             "txt_areas_utilities_w_disposal_waste_d_desc": ["get_by_location", "fill", "#waste_disposal_desc", "WASTE DISPOSAL DESCRIPTION"],
             "txt_areas_utilities_w_disposal_waste_d_method": ["get_by_location", "fill", "#waste_disposal_method_desc", "DISCUSSION OF METHODS"],
             "add_areas_utilities_w_disposal_waste_products": ["get_by_file_chooser", "#activity_wasteproducts_supporting_documentsDropzone",r"Testing_document.png"],
             "add_areas_utilities_w_disposal_generated_waste": ["get_by_file_chooser", "#activity_generatedwaste_supporting_documentsDropzone",r"Testing_document.png"],
-            # "btn_areas_utilities_w_disposal_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+            "btn_areas_utilities_w_disposal_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
