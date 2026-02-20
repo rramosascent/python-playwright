@@ -1,4 +1,4 @@
-import pytest
+import pytest, re
 from modules.testcases.ecp.data_processing import DataProcessingClass
 
 # @pytest.mark.usefixtures("setup")
@@ -126,15 +126,50 @@ class TestSuite0001():
             "txt_timetable_bld_admin0": ["get_by_location", "fill", "#adminPersonnelCount0", "100"],
             "txt_timetable_bld_admin1": ["get_by_location", "fill", "#adminPersonnelCount1", "100"],
             "txt_timetable_bld_admin2": ["get_by_location", "fill", "#adminPersonnelCount2", "100"],
-            "txt_timetable_bld_save_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+            "btn_timetable_bld_save_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
     def test_create_new_berms_manu_servi_flow(self) -> None:
         data_element_action = {
-            "txt_company_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 001"],
+            "txt_desrcibe_manufacturing_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 001"],
             # "add_diagram_process_flow": ["get_by_file_chooser", "Click Here", r"Testing_document.png"],
             "add_diagram_process_flow": ["get_by_file_chooser", "#addtlInfo_supporting_documentsDropzone", r"Testing_document.png"],
+            "btn_manu_servi_flow_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_m_rp_p_schedule_add_machinery_equipment(self) -> None:
+        data_element_action = {
+            "btn_machinery_equipment_add": ["get_by_title_click", "Machinery/Equipments"],
+            "txt_machinery_equipment_description": ["get_by_role_name", "textbox_b", "* Item Description", "DESCRIPTION 001"],
+            "txt_machinery_equipment_quantity": ["get_by_location", "fill", "#itemQty", "100000"],
+            "txt_machinery_equipment_cost": ["get_by_location", "fill", "#itemUnitCost", "100"],
+            "opt_machinery_equipment_source": ["get_by_role_combox_select", "#select2-itemSource-container","IMPORTED"],
+            "opt_machinery_equipment_origin": ["get_by_role_combox_select", "#select2-originId-container","[DE] Germany"],
+            "btn_machinery_equipment_save_new": ["get_by_role_name", "button", " Save & Add New"],
+            "btn_machinery_equipment_cancel": ["get_by_role_name", "button", "Close"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_m_rp_p_schedule_add_materials(self) -> None:
+        data_element_action = {
+            "btn_raw_mats_fin_products_add": ["get_by_title_click", "Raw Material/Semi Finished"],
+            "txt_raw_mats_fin_products_description": ["get_by_role_name", "textbox_b", "* Item Description","ITEM DESCRIPTION 001"],
+            "opt_raw_mats_fin_products_source": ["get_by_role_combox_select", "#select2-productSource-container","IMPORTED"],
+            "opt_raw_mats_fin_products_origin": ["get_by_role_combox_select", "#select2-productOriginId-container","[DE] Germany"],
+            "btn_raw_mats_fin_products_save_new": ["get_by_role_name", "button", " Save & Add New"],
+            "btn_raw_mats_fin_products_cancel": ["get_by_role_name", "button", "Close"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_m_rp_p_schedule_add_schedule(self) -> None:
+        data_element_action = {
+            "txt_scheudle_shifts": ["get_by_location", "fill", "#prodSchedShifts0", "3"],
+            "txt_schedule_hours_per_shift": ["get_by_location", "fill", "#prodSchedHourShifts0", "21"],
+            "txt_schedule_days_per_monthj": ["get_by_location", "fill", "#prodSchedDaysMonth0", "21"],
+            "btn_m_rp_p_schedule_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
