@@ -214,6 +214,23 @@ class TestSuite0001():
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
+    def test_create_new_berms_initial_project_cost(self) -> None:
+        data_element_action = {
+            "txt_initial_project_cost_construc_renov": ["get_by_location", "fill", "[name='projectCost[building_construction_renovation]']", "10"],
+            "txt_initial_project_cost_factory_tools": ["get_by_location", "fill", "[name='projectCost[factory_tools]']", "25"],
+            "txt_initial_project_cost_transportation": ["get_by_location", "fill", "[name='projectCost[transporation]']", "25"],
+            "txt_initial_project_cost_office_equipment": ["get_by_location", "fill", "[name='projectCost[office_equipment]']", "37"],
+            "txt_initial_project_cost_other_assets": ["get_by_location", "fill", "[name='projectCost[other_assets]']", "1000"],
+            "txt_initial_project_cost_operating_expenses": ["get_by_location", "fill", "[name='projectCost[operating_expenses]']", "28"],
+            "txt_initial_project_cost_working_capital": ["get_by_location", "fill", "[name='projectCost[working_capital]']", "100"],
+            "txt_initial_project_cost_equity": ["get_by_location", "fill", "[name='fund_source[0][amount]']", "10001000"],
+            "txt_initial_project_cost_add_equity": ["get_by_location", "fill", "[name='fund_source[1][amount]']", "100"],
+            "txt_initial_project_cost_advances": ["get_by_location", "fill", "[name='fund_source[2][amount]']", "100"],
+            "txt_initial_project_cost_loans": ["get_by_location", "fill", "[name='fund_source[3][amount]']", "25"],
+            "btn_initial_project_cost_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
         page = self.driver
         page.wait_for_timeout(60000)
 
