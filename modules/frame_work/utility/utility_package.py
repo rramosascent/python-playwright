@@ -17,6 +17,9 @@ class UtilityPackage():
 
         return date_picker_year, date_picker_month, date_picker_date, formatted_date_text
 
+    def trip_id_entry(self, date_input_value):
+        return date_input_value.replace("#","",1)
+
     def month_number_conversion_xxx(self, date_input_value):
         match date_input_value:
             case "1":

@@ -198,6 +198,15 @@ class TestSuite0001():
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
+    def test_create_new_berms_market_aspec(self) -> None:
+        data_element_action = {
+            "opt_market_aspect_export_rate": ["get_by_role_combox_select", "#select2-exportPercent-container","50%"],
+            "opt_market_aspect_domestic_rate": ["get_by_role_combox_select", "#select2-importPercent-container","50%"],
+            "opt_market_aspect_country_export": ["get_by_role_combox_multiple_select", "[HM] Heard Island and McDonald Islands"],
+
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
         page = self.driver
         page.wait_for_timeout(60000)
 

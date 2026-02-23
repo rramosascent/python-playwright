@@ -40,6 +40,8 @@ class FrameWorkPWDriver:
                 self.get_by_title_click(data_list)
             case 'select_date_picker_v1':
                 self.select_date_picker_v1(data_list)
+            case 'get_by_role_combox_multiple_select':
+                self.get_by_role_combox_multiple_select(data_list)
             case _:
                 pytest.fail('invalid function')
     def open_url(self, get_by_data):
@@ -83,15 +85,26 @@ class FrameWorkPWDriver:
 
     def get_by_role_combox_select(self,get_by_data):
         self.driver.wait_for_timeout(5000)
-        combobox_text = self.driver.locator(get_by_data[1]).inner_text()
-        if combobox_text == "":
-            self.driver.get_by_role("combobox").filter(has_text=re.compile(r"^$")).locator("b").click()
-        else:
-            expect(self.driver.get_by_role("combobox", name=combobox_text)).to_be_visible(timeout=10000)
-            self.driver.get_by_role("combobox", name=combobox_text).click()
+        # combobox_text = self.driver.locator(get_by_data[1]).inner_text()
+
+        # if combobox_text == "":
+        #     self.driver.get_by_role("combobox").filter(has_text=re.compile(r"^$")).locator("b").click()
+        # else:
+        #     expect(self.driver.get_by_role("combobox", name=combobox_text)).to_be_visible(timeout=10000)
+        #     self.driver.get_by_role("combobox", name=combobox_text).click()
+        expect(self.driver.locator(get_by_data[1])).to_be_visible(timeout=10000)
+        self.driver.locator(get_by_data[1]).click()
 
         expect(self.driver.get_by_role("option", name=get_by_data[2], exact=True)).to_be_visible(timeout=10000)
         self.driver.get_by_role("option", name=get_by_data[2], exact=True).click()
+
+    def get_by_role_combox_multiple_select(self,get_by_data):
+        self.driver.wait_for_timeout(5000)
+        expect(self.driver.get_by_role("list").filter(has_text=re.compile(r"^$"))).to_be_visible(timeout=10000)
+        self.driver.get_by_role("list").filter(has_text=re.compile(r"^$")).click()
+
+        expect(self.driver.get_by_role("option", name=get_by_data[1], exact=True)).to_be_visible(timeout=10000)
+        self.driver.get_by_role("option", name=get_by_data[1], exact=True).click()
 
     def get_by_title_click(self, get_by_data):
         expect(self.driver.get_by_title(get_by_data[1])).to_be_visible(timeout=10000)
