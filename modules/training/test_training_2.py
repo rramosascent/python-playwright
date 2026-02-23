@@ -202,8 +202,15 @@ class TestSuite0001():
         data_element_action = {
             "opt_market_aspect_export_rate": ["get_by_role_combox_select", "#select2-exportPercent-container","50%"],
             "opt_market_aspect_domestic_rate": ["get_by_role_combox_select", "#select2-importPercent-container","50%"],
-            "opt_market_aspect_country_export": ["get_by_role_combox_multiple_select", "[HM] Heard Island and McDonald Islands"],
-
+            "opt_market_aspect_country_export": ["get_by_role_combox_multiple_select", "^$","[HM] Heard Island and McDonald Islands"],
+            "txt_market_aspect_country_x_selling_price": ["get_by_location", "fill", "#export_selling_price","2354"],
+            "txt_market_aspect_country_d_selling_price": ["get_by_location", "fill", "#domestic_selling_price","4532"],
+            "opt_market_aspect_country_uom": ["get_by_role_combox_select", "#select2-projected_volume_sales_id-container","[KGM] Kilogram"],
+            "btn_market_aspect_country_add_e_marketavv": ["get_by_title_click", "Add Export"],
+            "txt_market_aspect_country_add_e_marketavv0": ["get_by_location", "fill", "#export_marketAspectVolumeValue0", "8888"],
+            "btn_market_aspect_country_add_i_marketavv": ["get_by_title_click", "Add Local"],
+            "txt_market_aspect_country_add_i_marketavv0": ["get_by_location", "fill","#import_marketAspectVolumeValue0", "7777"],
+            "btn_market_aspect_country_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
