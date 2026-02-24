@@ -83,10 +83,10 @@ class FrameWorkPWDriver:
         self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).scroll_into_view_if_needed()
 
     def expect_locator(self, get_by_data):
-        expect(self.driver.locator(get_by_data[1])).to_be_visible(timeout=10000)
+        expect(self.driver.locator(get_by_data[1])).to_be_visible(timeout=30000)
 
     def expect_locator_filter_has_txt(self, get_by_data):
-        expect(self.driver.locator(get_by_data[1]).filter(has_text=get_by_data[2]).first).to_be_visible(timeout=30000)
+        expect(self.driver.locator(get_by_data[1]).filter(has_text=get_by_data[2]).first).to_be_visible(timeout=10000)
 
     def get_by_location_option_select(self, get_by_data):
         self.driver.locator(get_by_data[1]).select_option(get_by_data[2])
