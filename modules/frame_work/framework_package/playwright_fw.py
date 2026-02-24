@@ -20,6 +20,10 @@ class FrameWorkPWDriver:
                 self.get_by_location_fill_a(data_list)
             case 'get_by_location_fill_b':
                 self.get_by_location_fill_b(data_list)
+            case 'get_by_location_fill_c':
+                self.get_by_location_fill_c(data_list)
+            case 'get_by_location_fill_d':
+                self.get_by_location_fill_d(data_list)
             case 'get_by_location_option_select':
                 self.get_by_location_option_select(data_list)
             case 'expect_by_role_name':
@@ -42,6 +46,8 @@ class FrameWorkPWDriver:
                 self.select_date_picker_v1(data_list)
             case 'get_by_role_combox_multiple_select':
                 self.get_by_role_combox_multiple_select(data_list)
+            case 'expect_locator':
+                self.expect_locator(data_list)
             case _:
                 pytest.fail('invalid function')
     def open_url(self, get_by_data):
@@ -59,7 +65,7 @@ class FrameWorkPWDriver:
             case 'checkbox':
                 self.driver.locator(get_by_data[2]).check()
             case 'fill':
-                # expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
+                expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
                 # self.driver.locator(get_by_data[2]).count()
                 self.driver.locator(get_by_data[2]).fill(get_by_data[3])
             case 'fill2':
@@ -76,8 +82,11 @@ class FrameWorkPWDriver:
         expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible(timeout=10000)
         self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).scroll_into_view_if_needed()
 
+    def expect_locator(self, get_by_data):
+        expect(self.driver.locator(get_by_data[1])).to_be_visible(timeout=10000)
+
     def expect_locator_filter_has_txt(self, get_by_data):
-        expect(self.driver.locator(get_by_data[1]).filter(has_text=get_by_data[2]).first).to_be_visible(timeout=10000)
+        expect(self.driver.locator(get_by_data[1]).filter(has_text=get_by_data[2]).first).to_be_visible(timeout=30000)
 
     def get_by_location_option_select(self, get_by_data):
         self.driver.locator(get_by_data[1]).select_option(get_by_data[2])
@@ -134,6 +143,16 @@ class FrameWorkPWDriver:
     def get_by_location_fill_b(self, get_by_data):
         self.driver.locator(get_by_data[1]).fill(get_by_data[2])
         self.driver.locator(get_by_data[1]).press("Tab")
+
+    def get_by_location_fill_c(self, get_by_data):
+        self.driver.locator(get_by_data[1]).click()
+        self.driver.locator(get_by_data[1]).fill(get_by_data[2])
+        self.driver.locator(get_by_data[1]).press("Enter")
+
+    def get_by_location_fill_d(self, get_by_data):
+        self.driver.locator("tags").get_by_role("textbox").click()
+        self.driver.locator("tags").get_by_role("textbox").fill(get_by_data[2])
+        self.driver.locator("tags").get_by_role("textbox").press("Enter")
 
     def get_by_role_name(self, get_by_data):
         match get_by_data[1]:

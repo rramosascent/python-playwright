@@ -93,8 +93,18 @@ class TestSuite0001():
 
     def test_create_new_berms_stockholder_reg(self) -> None:
         data_element_action = {
-            "txt_proposed_stockholder_type": ["get_by_role_name", "radio_b", "Person"],
-            "txt_proposed_stockholder_item": ["get_by_location","filter_th_click","#stockholderWrapper div","Not Applicable","1"],
+            "txt_proposed_stockholder_type": ["get_by_role_name", "radio_b", "Corporate"],
+            # "txt_proposed_stockholder_type1": ["get_by_role_name", "radio_b", "Person"],
+            "btn_proposed_stockholder_add": ["get_by_title_click", "Add Stockholder"],
+            "txt_proposed_stockholder_company_name": ["get_by_role_name", "textbox_b", "Company Name *", "COMPANY NAME CORP"],
+            "txt_proposed_stockholder_nationality": ["get_by_role_combox_select","#select2-proposedStockholderNationalityId-container","Finnish"],
+            "txt_proposed_stockholder_no_shares": ["get_by_role_name", "textbox_b", "No. of Shares *","1280"],
+            "txt_proposed_stockholder_subscribed": ["get_by_role_name", "textbox_b", "Amount Subscribe (PHP) *","1281"],
+            "txt_proposed_stockholder_amount_paid": ["get_by_role_name", "textbox_b", "Amount Paid-up (PHP) *","1282"],
+            "txt_proposed_stockholder_amount_add_proceed": ["get_by_role_name", "button", " Add"],
+            "txt_proposed_stockholder_item": ["get_by_location","click","#isListedStockholder1"],
+            "txt_proposed_stockholder_item1": ["get_by_location","click","#isListedStockholder2"],
+            # "txt_proposed_stockholder_item1": ["get_by_location","filter_th_click","#stockholderWrapper div","Not Applicable","1"],
             "btn_proposed_principal_officer_add": ["get_by_title_click","Add Principal Officer"],
             "opt_proporse_principal_officer_salutation": ["get_by_role_combox_select","#select2-officerSalutationId-container","Mr."],
             "txt_proporse_principal_officer_fname": ["get_by_role_name", "textbox_b", "* First Name","PRNCIPAL FNAME"],
@@ -203,13 +213,18 @@ class TestSuite0001():
             "opt_market_aspect_export_rate": ["get_by_role_combox_select", "#select2-exportPercent-container","50%"],
             "opt_market_aspect_domestic_rate": ["get_by_role_combox_select", "#select2-importPercent-container","50%"],
             "opt_market_aspect_country_export": ["get_by_role_combox_multiple_select", "^$","[HM] Heard Island and McDonald Islands"],
+            "txt_market_aspect_country_domestic_clients": ["get_by_location_fill_d", "#domestic_clients", "DOMESTIC CLIENTS"],
             "txt_market_aspect_country_x_selling_price": ["get_by_location", "fill", "#export_selling_price","2354"],
             "txt_market_aspect_country_d_selling_price": ["get_by_location", "fill", "#domestic_selling_price","4532"],
             "opt_market_aspect_country_uom": ["get_by_role_combox_select", "#select2-projected_volume_sales_id-container","[KGM] Kilogram"],
-            "btn_market_aspect_country_add_e_marketavv": ["get_by_title_click", "Add Export"],
+            # "btn_market_aspect_country_add_e_marketavv": ["get_by_title_click", "Add Export"],
             "txt_market_aspect_country_add_e_marketavv0": ["get_by_location", "fill", "#export_marketAspectVolumeValue0", "8888"],
-            "btn_market_aspect_country_add_i_marketavv": ["get_by_title_click", "Add Local"],
+            "txt_market_aspect_country_add_e_marketavv1": ["get_by_location", "fill", "#export_marketAspectVolumeValue1", "8888"],
+            "txt_market_aspect_country_add_e_marketavv2": ["get_by_location", "fill", "#export_marketAspectVolumeValue2", "8888"],
+            # "btn_market_aspect_country_add_i_marketavv": ["get_by_title_click", "Add Local"],
             "txt_market_aspect_country_add_i_marketavv0": ["get_by_location", "fill","#import_marketAspectVolumeValue0", "7777"],
+            "txt_market_aspect_country_add_i_marketavv1": ["get_by_location", "fill","#import_marketAspectVolumeValue1", "7777"],
+            "txt_market_aspect_country_add_i_marketavv2": ["get_by_location", "fill","#import_marketAspectVolumeValue2", "7777"],
             "btn_market_aspect_country_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
@@ -224,15 +239,57 @@ class TestSuite0001():
             "txt_initial_project_cost_operating_expenses": ["get_by_location", "fill", "[name='projectCost[operating_expenses]']", "28"],
             "txt_initial_project_cost_working_capital": ["get_by_location", "fill", "[name='projectCost[working_capital]']", "100"],
             "txt_initial_project_cost_equity": ["get_by_location", "fill", "[name='fund_source[0][amount]']", "10001000"],
+            "opt_initial_project_cost_fund_source_1": ["get_by_location_option_select", "#fundSource2", "Foreign Loan"],
             "txt_initial_project_cost_add_equity": ["get_by_location", "fill", "[name='fund_source[1][amount]']", "100"],
+            "opt_initial_project_cost_fund_source_2": ["get_by_location_option_select", "#fundSource3", "Local Loan"],
             "txt_initial_project_cost_advances": ["get_by_location", "fill", "[name='fund_source[2][amount]']", "100"],
-            "txt_initial_project_cost_loans": ["get_by_location", "fill", "[name='fund_source[3][amount]']", "25"],
+            "txt_initial_project_cost_loans": ["get_by_location_fill_c", "[name='fund_source[3][amount]']", "25"],
             "btn_initial_project_cost_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
+    def test_create_new_berms_supporting_documents_1(self) -> None:
+        data_element_action = {
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnernao10",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerund8",r"Testing_document.png"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_supporting_documents_2(self) -> None:
+        data_element_action = {
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerby_law7",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInneraoi6",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnergis5", r"Testing_document.png"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_supporting_documents_3(self) -> None:
+        data_element_action = {
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerpfs4",r"Testing_document.xlsx"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerbir3",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnercppc2", r"Testing_document.png"],
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_supporting_documents_4(self) -> None:
+        data_element_action = {
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerrbpo1", r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnercrsec0", r"Testing_document.png"],
+            "btn_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+    def test_create_new_berms_submit(self) -> None:
+        data_element_action = {
+            "btn_add_submit": ["get_by_role_name", "button", "SUBMIT"],
+            "btn_add_proceed": ["get_by_role_name", "button", "Proceed"],
+            "verify_application_number": ["expect_locator","#swal2-html-container strong span"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
         page = self.driver
-        page.wait_for_timeout(60000)
+        page.wait_for_timeout(120000)
 
         # data_element_action = {
         #     "opt_app_type": ["get_by_location_option_select", "#applicationTypeId", "value:'2'"]
