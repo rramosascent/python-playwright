@@ -55,9 +55,9 @@ class TestSuite0001():
 
     def test_create_new_berms_company_pesonal_info(self) -> None:
         data_element_action = {
-            "txt_company_name": ["get_by_role_name", "textbox_a", "Company Name", "COMPANY NAME TESTING 001"],
-            "txt_nature_business": ["get_by_role_name", "textbox_a", "Nature of Business", "NATURE OF BUSINESS TESTING 00"],
-            "txt_company_profile": ["get_by_role_name", "textbox_a", "Company Profile", "COMPANY PROFILE TESTING 001"],
+            "txt_company_name": ["get_by_role_name", "textbox_a", "Company Name", "COMPANY NAME TESTING 002"],
+            "txt_nature_business": ["get_by_role_name", "textbox_a", "Nature of Business", "NATURE OF BUSINESS TESTING 002"],
+            "txt_company_profile": ["get_by_role_name", "textbox_a", "Company Profile", "COMPANY PROFILE TESTING 002"],
             "btn_san_company_person_info": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
@@ -65,10 +65,10 @@ class TestSuite0001():
     def test_create_new_berms_company_proposed_project(self) -> None:
         data_element_action = {
             "btn_proposed_project": ["get_by_location", "click", "#btnBusinessProduct"],
-            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PROPOSES PRODUCT ACTIVITY 001"],
+            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PROPOSES PRODUCT ACTIVITY 002"],
             "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
-            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PROPOSE PRODUCT ACTIVITY 001 DESCRIPTION"],
-            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "NEW PRODUCT USES AND APPLICATION 0001"],
+            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PROPOSE PRODUCT ACTIVITY 002 DESCRIPTION"],
+            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "NEW PRODUCT USES AND APPLICATION 002"],
             # "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
             "add_proposed_project_permit": ["get_by_file_chooser", "#activity_product_img_documentsDropzone", r"Testing_document.png"],
             "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
@@ -79,8 +79,8 @@ class TestSuite0001():
     def test_create_new_berms_existing_business_reg(self) -> None:
         data_element_action = {
             "date_proposed_registration_date": ["get_by_role_name", "row_dp", "Securities & Exchange","DD-MMM-YYYY","2016-01-11"],
-            "txt_proposed_registration_no": ["get_by_location", "fill", "input[name=\"businessRegInfoAppsBean[0].reg_no\"]","REG-2025-001"],
-            "txt_proposed_sec_primary_purpose": ["get_by_role_name", "textbox_b", "Sec Primary Purpose","SEC PRIMARY PURPOSE 00"],
+            "txt_proposed_registration_no": ["get_by_location", "fill", "input[name=\"businessRegInfoAppsBean[0].reg_no\"]","REG-2025-002"],
+            "txt_proposed_sec_primary_purpose": ["get_by_role_name", "textbox_b", "Sec Primary Purpose","SEC PRIMARY PURPOSE 002"],
             "txt_proposed_authorized_amount": ["get_by_role_name", "textbox_b", "Authorized Amount (PHP)","99999999999"],
             "txt_proposed_subscribed_amount": ["get_by_role_name", "textbox_b", "Subscribe Amount (PHP)","99999999999"],
             "txt_proposed_paid-up_amount": ["get_by_role_name", "textbox_b", "* Paid-up Amount (PHP):","99999999999"],
