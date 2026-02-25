@@ -250,32 +250,31 @@ class TestSuite0001():
 
     def test_create_new_berms_supporting_documents_1(self) -> None:
         data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnernao10",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerund8",r"Testing_document.png"]
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerund8",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerby_law7",r"Testing_document.png"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
     def test_create_new_berms_supporting_documents_2(self) -> None:
         data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerby_law7",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInneraoi6",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnergis5", r"Testing_document.png"]
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInneraoi6",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnergis5",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerpfs4", r"Testing_document.xlsx"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
     def test_create_new_berms_supporting_documents_3(self) -> None:
         data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerpfs4",r"Testing_document.xlsx"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerbir3",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnercppc2", r"Testing_document.png"],
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerbir3",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnercppc2",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerrbpo1", r"Testing_document.png"],
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
     def test_create_new_berms_supporting_documents_4(self) -> None:
         data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerrbpo1", r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnercrsec0", r"Testing_document.png"],
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnercrsec0", r"Testing_document.png"],
             "btn_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
@@ -284,7 +283,8 @@ class TestSuite0001():
         data_element_action = {
             "btn_add_submit": ["get_by_role_name", "button", "SUBMIT"],
             "btn_add_proceed": ["get_by_role_name", "button", "Proceed"],
-            "verify_application_number": ["expect_locator","#swal2-html-container strong span"]
+            "verify_application_number": ["expect_locator","#swal2-html-container strong span"],
+            "btn_add_proceed_confirm": ["get_by_role_name", "button", "OK"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
