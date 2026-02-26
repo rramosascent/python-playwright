@@ -43,7 +43,7 @@ class TestSuite0001():
     def test_create_new_berms_application(self) -> None:
         data_element_action = {
             "opt_app_type": ["get_by_role_combox_select", "#select2-applicationTypeId-container","NEW ECOZONE ENTERPRISE"],
-            "rbtn_type_ezone": ["get_by_role_name","radio_b", "Domestic Market"],
+            "rbtn_type_ezone": ["get_by_role_name","radio_b", "Tourism"],
             "opt_psic_classification": ["get_by_role_combox_select", "#select2-sectionCodeId-container","Accommodation and Food Service Activities"],
             "opt_psic_division": ["get_by_role_combox_select", "#select2-divisionCodeId-container","[56] FOOD AND BEVERAGE SERVICE ACTIVITIES"],
             "opt_psic_group": ["get_by_role_combox_select", "#select2-groupCodeId-container","[563] Beverage serving activities"],
@@ -55,9 +55,9 @@ class TestSuite0001():
 
     def test_create_new_berms_company_pesonal_info(self) -> None:
         data_element_action = {
-            "txt_company_name": ["get_by_role_name", "textbox_a", "Company Name", "DOMESTIC COMPANY NAME TESTING 012"],
-            "txt_nature_business": ["get_by_role_name", "textbox_a", "Nature of Business", "NATURE OF BUSINESS TESTING 012"],
-            "txt_company_profile": ["get_by_role_name", "textbox_a", "Company Profile", "COMPANY PROFILE TESTING 012"],
+            "txt_company_name": ["get_by_role_name", "textbox_a", "Company Name", "TOURISM COMPANY NAME TESTING 004"],
+            "txt_nature_business": ["get_by_role_name", "textbox_a", "Nature of Business", "NATURE OF BUSINESS TOURISM COMPANY 004"],
+            "txt_company_profile": ["get_by_role_name", "textbox_a", "Company Profile", "COMPANY PROFILE TOURISM COMPANY 004"],
             "btn_san_company_person_info": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
@@ -65,10 +65,10 @@ class TestSuite0001():
     def test_create_new_berms_company_proposed_project(self) -> None:
         data_element_action = {
             "btn_proposed_project": ["get_by_location", "click", "#btnBusinessProduct"],
-            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PRODUCT ACTIVITY DOMESTIC COMPANY 012"],
+            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PRODUCT ACTIVITY TOURISM COMPANY 004"],
             "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
-            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PRODUCT ACTIVITY DOMESTIC COMPANY 012 DESCRIPTION"],
-            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "USES AND APPLICATION NEW PRODUCT ACTIVITY DOMESTIC COMPANY 012"],
+            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PRODUCT ACTIVITY TOURISM COMPANY 004 DESCRIPTION"],
+            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "USES AND APPLICATION NEW PRODUCT ACTIVITY TOURISM COMPANY 004"],
             # "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
             "add_proposed_project_permit": ["get_by_file_chooser", "#activity_product_img_documentsDropzone", r"Testing_document.png"],
             "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
@@ -143,7 +143,7 @@ class TestSuite0001():
 
     def test_create_new_berms_manu_servi_flow(self) -> None:
         data_element_action = {
-            "txt_desrcibe_manufacturing_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 005"],
+            "txt_desrcibe_manufacturing_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 004"],
             # "add_diagram_process_flow": ["get_by_file_chooser", "Click Here", r"Testing_document.png"],
             "add_diagram_process_flow": ["get_by_file_chooser", "#addtlInfo_supporting_documentsDropzone", r"Testing_document.png"],
             "btn_manu_servi_flow_proceed": ["get_by_role_name", "button", "Save and Proceed"]
@@ -248,37 +248,40 @@ class TestSuite0001():
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
+    def test_create_new_berms_supporting_documents_0(self) -> None:
+        data_element_action = {
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnernao11",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInneredt_dh10",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"Testing_document.png"]
+        }
+        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+
+
     def test_create_new_berms_supporting_documents_1(self) -> None:
         data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerund8",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerby_law7",r"Testing_document.png"]
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerund8",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerby_law7",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInneraoi6",r"Testing_document.png"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
     def test_create_new_berms_supporting_documents_2(self) -> None:
         data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInneraoi6",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnergis5",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerpfs4", r"Testing_document.xlsx"]
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnergis5",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerpfs4",r"Testing_document.xlsx"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerbir3", r"Testing_document.png"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
     def test_create_new_berms_supporting_documents_3(self) -> None:
         data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerbir3",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnercppc2",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerrbpo1", r"Testing_document.png"],
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_supporting_documents_4(self) -> None:
-        data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnercrsec0", r"Testing_document.png"],
+            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnercppc2",r"Testing_document.png"],
+            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerrbpo1",r"Testing_document.png"],
+            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnercrsec0",r"Testing_document.png"],
             "btn_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
-
     def test_create_new_berms_submit(self) -> None:
         data_element_action = {
             "btn_add_submit": ["get_by_role_name", "button", "SUBMIT"],
@@ -289,7 +292,7 @@ class TestSuite0001():
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
         # page = self.driver
-        # page.wait_for_timeout(120000)
+        # page.wait_for_timeout(60000)
 
         # data_element_action = {
         #     "opt_app_type": ["get_by_location_option_select", "#applicationTypeId", "value:'2'"]
