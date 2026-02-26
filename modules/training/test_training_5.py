@@ -55,9 +55,9 @@ class TestSuite0001():
 
     def test_create_new_berms_company_pesonal_info(self) -> None:
         data_element_action = {
-            "txt_company_name": ["get_by_role_name", "textbox_a", "Company Name", "LOGISTICS COMPANY NAME TESTING 003"],
-            "txt_nature_business": ["get_by_role_name", "textbox_a", "Nature of Business", "NATURE OF BUSINESS LOGISTICS COMPANY 003"],
-            "txt_company_profile": ["get_by_role_name", "textbox_a", "Company Profile", "COMPANY PROFILE LOGISTICS COMPANY 003"],
+            "txt_company_name": ["get_by_role_name", "textbox_a", "Company Name", "LOGISTICS COMPANY NAME TESTING 006"],
+            "txt_nature_business": ["get_by_role_name", "textbox_a", "Nature of Business", "NATURE OF BUSINESS LOGISTICS COMPANY 006"],
+            "txt_company_profile": ["get_by_role_name", "textbox_a", "Company Profile", "COMPANY PROFILE LOGISTICS COMPANY 006"],
             "btn_san_company_person_info": ["get_by_role_name", "button", "Save and Proceed"]
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
@@ -65,10 +65,10 @@ class TestSuite0001():
     def test_create_new_berms_company_proposed_project(self) -> None:
         data_element_action = {
             "btn_proposed_project": ["get_by_location", "click", "#btnBusinessProduct"],
-            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PRODUCT ACTIVITY LOGISTICS COMPANY 003"],
+            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PRODUCT ACTIVITY LOGISTICS COMPANY 006"],
             "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
-            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PRODUCT ACTIVITY LOGISTICS COMPANY 002 DESCRIPTION"],
-            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "USES AND APPLICATION NEW PRODUCT ACTIVITY LOGISTICS COMPANY 003"],
+            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PRODUCT ACTIVITY LOGISTICS COMPANY 006 DESCRIPTION"],
+            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "USES AND APPLICATION NEW PRODUCT ACTIVITY LOGISTICS COMPANY 006"],
             # "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
             "add_proposed_project_permit": ["get_by_file_chooser", "#activity_product_img_documentsDropzone", r"Testing_document.png"],
             "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
@@ -143,7 +143,7 @@ class TestSuite0001():
 
     def test_create_new_berms_manu_servi_flow(self) -> None:
         data_element_action = {
-            "txt_desrcibe_manufacturing_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 001"],
+            "txt_desrcibe_manufacturing_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 004"],
             # "add_diagram_process_flow": ["get_by_file_chooser", "Click Here", r"Testing_document.png"],
             "add_diagram_process_flow": ["get_by_file_chooser", "#addtlInfo_supporting_documentsDropzone", r"Testing_document.png"],
             "btn_manu_servi_flow_proceed": ["get_by_role_name", "button", "Save and Proceed"]
@@ -297,8 +297,8 @@ class TestSuite0001():
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
-        page = self.driver
-        page.wait_for_timeout(120000)
+        # page = self.driver
+        # page.wait_for_timeout(120000)
 
         # data_element_action = {
         #     "opt_app_type": ["get_by_location_option_select", "#applicationTypeId", "value:'2'"]
