@@ -61,20 +61,24 @@ class FrameWorkPWDriver:
                 expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=5000)
                 self.driver.locator(get_by_data[2]).scroll_into_view_if_needed()
             case 'click':
+                expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=5000)
                 self.driver.locator(get_by_data[2]).click()
             case 'checkbox':
+                expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=5000)
                 self.driver.locator(get_by_data[2]).check()
             case 'fill':
                 expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
                 # self.driver.locator(get_by_data[2]).count()
                 self.driver.locator(get_by_data[2]).fill(get_by_data[3])
             case 'fill2':
-                # expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
+                expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.locator(get_by_data[2]).locator('.numInput cur-year').fill(get_by_data[3])
                 # self.driver.locator(get_by_data[2]).fill(get_by_data[3])
             case 'set_input_fIles':
+                expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=5000)
                 self.driver.locator(get_by_data[2]).set_input_files(get_by_data[3])
             case 'filter_th_click':
+                expect(self.driver.locator(get_by_data[2]).filter(has_text=get_by_data[3]).nth(get_by_data[4])).to_be_visible(timeout=5000)
                 self.driver.locator(get_by_data[2]).filter(has_text=get_by_data[3]).nth(get_by_data[4]).click()
             case _:
                 pytest.fail('invalid option')
@@ -136,20 +140,28 @@ class FrameWorkPWDriver:
 
 
     def get_by_location_fill_a(self, get_by_data):
+        self.driver.locator(get_by_data[1]).scroll_into_view_if_needed()
+        expect(self.driver.locator(get_by_data[1])).to_be_visible(timeout=10000)
         self.driver.locator(get_by_data[1]).click()
         self.driver.locator(get_by_data[1]).fill(get_by_data[2])
         self.driver.locator(get_by_data[1]).press("Tab")
 
     def get_by_location_fill_b(self, get_by_data):
+        self.driver.locator(get_by_data[1]).scroll_into_view_if_needed()
+        expect(self.driver.locator(get_by_data[1])).to_be_visible(timeout=10000)
         self.driver.locator(get_by_data[1]).fill(get_by_data[2])
         self.driver.locator(get_by_data[1]).press("Tab")
 
     def get_by_location_fill_c(self, get_by_data):
+        self.driver.locator(get_by_data[1]).scroll_into_view_if_needed()
+        expect(self.driver.locator(get_by_data[1])).to_be_visible(timeout=10000)
         self.driver.locator(get_by_data[1]).click()
         self.driver.locator(get_by_data[1]).fill(get_by_data[2])
         self.driver.locator(get_by_data[1]).press("Enter")
 
     def get_by_location_fill_d(self, get_by_data):
+        self.driver.locator("tags").get_by_role("textbox").scroll_into_view_if_needed()
+        expect(self.driver.locator("tags").get_by_role("textbox")).to_be_visible(timeout=10000)
         self.driver.locator("tags").get_by_role("textbox").click()
         self.driver.locator("tags").get_by_role("textbox").fill(get_by_data[2])
         self.driver.locator("tags").get_by_role("textbox").press("Enter")
@@ -158,40 +170,39 @@ class FrameWorkPWDriver:
         match get_by_data[1]:
             case 'checkbox':
                 self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).scroll_into_view_if_needed()
-                expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible()
+                expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).check()
             case 'button':
-                expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).scroll_into_view_if_needed()
                 expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_in_viewport()
                 self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).click()
             case 'button_set_files':
                 self.driver.get_by_role("button", name=get_by_data[2]).set_input_files(get_by_data[3])
             case 'link':
-                expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible()
+                expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).click()
             case 'textbox_a':
-                expect(self.driver.get_by_role("textbox", name=get_by_data[2])).to_be_visible()
+                expect(self.driver.get_by_role("textbox", name=get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.get_by_role("textbox", name=get_by_data[2]).click()
                 self.driver.get_by_role("textbox", name=get_by_data[2]).fill(get_by_data[3])
                 self.driver.get_by_role("textbox", name=get_by_data[2]).press("Tab")
             case 'textbox_b':
-                expect(self.driver.get_by_role("textbox", name=get_by_data[2])).to_be_visible()
+                expect(self.driver.get_by_role("textbox", name=get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.get_by_role("textbox", name=get_by_data[2]).fill(get_by_data[3])
                 self.driver.get_by_role("textbox", name=get_by_data[2]).press("Tab")
             case 'link':
-                expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible()
+                expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible(timeout=10000)
             case 'row_item':
-                expect(self.driver.get_by_role("row", name=get_by_data[2]).get_by_role("link")).to_be_visible()
+                expect(self.driver.get_by_role("row", name=get_by_data[2]).get_by_role("link")).to_be_visible(timeout=10000)
                 self.driver.get_by_role("row", name=get_by_data[2]).get_by_role("link").click()
             case 'row_dp':
-                expect(self.driver.get_by_role("row", name=get_by_data[2]).get_by_placeholder(get_by_data[3])).to_be_visible()
+                expect(self.driver.get_by_role("row", name=get_by_data[2]).get_by_placeholder(get_by_data[3])).to_be_visible(timeout=10000)
                 self.driver.get_by_role("row", name=get_by_data[2]).get_by_placeholder(get_by_data[3]).fill(get_by_data[4])
             case 'radio_b':
-                expect(self.driver.get_by_role("radio", name=get_by_data[2])).to_be_visible()
+                expect(self.driver.get_by_role("radio", name=get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.get_by_role("radio", name=get_by_data[2]).click()
             case 'spinbutton':
-                expect(self.driver.get_by_role("spinbutton", name=get_by_data[2])).to_be_visible()
+                expect(self.driver.get_by_role("spinbutton", name=get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.get_by_role("spinbutton", name=get_by_data[2]).fill(get_by_data[3])
                 self.driver.get_by_role("spinbutton", name=get_by_data[2]).press("Tab")
             case _:
