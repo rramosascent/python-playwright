@@ -16,22 +16,25 @@ def setup(request, playwright: Playwright):
             match internet_browser:
                 case 'firefox':
                     browser = playwright.firefox.launch(headless=True)
+                    driver = browser.new_page()
                 case 'webkit':
                     browser = playwright.webkit.launch(headless=True)
+                    driver = browser.new_page()
                 case _:
                     browser = playwright.chromium.launch(headless=True)
+                    driver = browser.new_page()
         case _:
             match internet_browser:
                 case 'firefox':
                     browser = playwright.firefox.launch(headless=False)
+                    driver = browser.new_page(no_viewport=True)
                 case 'webkit':
                     browser = playwright.webkit.launch(headless=False)
+                    driver = browser.new_page(no_viewport=True)
                 case _:
-                    # browser = playwright.chromium.launch(headless=False)
                     browser = playwright.chromium.launch(headless=False,args=["--start-maximized"])
+                    driver = browser.new_page(no_viewport=True)
 
-    driver = browser.new_page()
-    # driver = browser.new_page(no_viewport=True)
     # driver.goto("http://112.199.119.250:82/ECP/auth/login")
     request.cls.driver = driver
     yield
