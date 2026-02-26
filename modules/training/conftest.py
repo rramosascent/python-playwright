@@ -15,7 +15,7 @@ def setup(request, playwright: Playwright):
         case 'headless':
             match internet_browser:
                 case 'firefox':
-                    browser = playwright.firefox.launch(headless=True)
+                    browser = playwright.firefox.launch(headless=True,args=["--start-maximized"])
                     driver = browser.new_page()
                 case 'webkit':
                     browser = playwright.webkit.launch(headless=True)
