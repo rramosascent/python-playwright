@@ -72,3 +72,6 @@ class UtilityPackage():
 
         get_work_book.save(open_excel_path_location)
 
+    def save_application_number(self, get_data) -> None:
+        with open("for_processing.txt", "a", encoding="utf-8") as f:
+            f.write(f"{get_data}\n")
