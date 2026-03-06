@@ -7,6 +7,9 @@ class UtilityPackage():
     def padd_zeroes(self, data):
         return str(data).zfill(6)
 
+    def padd_zeroes_2(self, data):
+        return str(data).zfill(3)
+
     def date_picker_data_strptime(self, date_input_value):
         date_input_value_to_string = datetime.datetime.strptime(date_input_value, "%m/%d/%Y")
         date_picker_year = date_input_value_to_string.strftime("%Y")

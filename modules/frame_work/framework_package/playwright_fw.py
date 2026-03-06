@@ -81,6 +81,9 @@ class FrameWorkPWDriver:
                 expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=10000)
                 self.driver.locator(get_by_data[2]).locator('.numInput cur-year').fill(get_by_data[3])
                 # self.driver.locator(get_by_data[2]).fill(get_by_data[3])
+            case 'label_has_txt_click':
+                expect(self.driver.locator("label").filter(has_text=get_by_data[2])).to_be_visible(timeout=10000)
+                self.driver.locator("label").filter(has_text=get_by_data[2]).click()
             case 'set_input_fIles':
                 self.driver.locator(get_by_data[2]).scroll_into_view_if_needed()
                 expect(self.driver.locator(get_by_data[2])).to_be_visible(timeout=5000)
@@ -92,7 +95,7 @@ class FrameWorkPWDriver:
             case _:
                 pytest.fail('invalid option')
     def expect_by_role_name(self, get_by_data):
-        expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible(timeout=10000)
+        expect(self.driver.get_by_role(get_by_data[1], name=get_by_data[2])).to_be_visible(timeout=20000)
         self.driver.get_by_role(get_by_data[1], name=get_by_data[2]).scroll_into_view_if_needed()
 
     def expect_locator(self, get_by_data):
