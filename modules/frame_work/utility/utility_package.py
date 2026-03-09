@@ -4,6 +4,12 @@ import time
 
 
 class UtilityPackage():
+
+    def add_data_in_array(self, main_data, input_data):
+        count_array = len(main_data) - 1
+        main_data_collect = main_data
+        main_data_collect[count_array] = input_data
+        return main_data_collect
     def padd_zeroes(self, data):
         return str(data).zfill(6)
 

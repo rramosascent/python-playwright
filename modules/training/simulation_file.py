@@ -1,11 +1,12 @@
-my_dict = {
-    "gen": {"fname": "Alice", "lname": "Grace","mname": "Castro"},
-    "age": 30,
-    "city": "New York"
-}
+# my_dict = {
+#     "gen": {"fname": "Alice", "lname": "Grace","mname": "Castro"},
+#     "age": 30,
+#     "city": "New York"
+# }
 # print(my_dict)
 # print(my_dict.keys())
 # print(my_dict["gen"]["fname"])
+# print(my_dict["age"])
 
 # my_dict = {"brand": "Ford", "model": "Mustang"}
 # ecp_data = DictionaryData()
@@ -101,38 +102,38 @@ my_dict = {
 
 # def open_test_case_excel_file(self, open_excel_path_location):
 
-ecp_action_map = {
-    "login": {
-        "link_login": ["open_url", "XXXXXX"],
-        "privacy_policy": ["get_by_role_name", "checkbox", "I agree"],
-        "privacy_pbutton": ["get_by_role_name", "button", "Proceed"],
-        "user_name": ["get_by_role_name", "textbox_a", "Enter your email or username", "XXXXXX"],
-        "password": ["get_by_role_name", "textbox_b", "Password", "XXXXXX"],
-        "btn_sign_in": ["get_by_role_name", "button", "SIGN IN"]
-    }
-}
-
-ecp_action_data = {
-        "login": {
-            "link_login": [
-                1,
-                "url"
-            ],
-            "user_name": [
-                3,
-                "001"
-            ],
-            "password": [
-                3,
-                "001"
-            ]
-        }
-}
-
-for key, value in ecp_action_data["login"].items():
-    ecp_action_map["login"][key][value[0]] = value[1]
-
-print(ecp_action_map)
+# ecp_action_map = {
+#     "login": {
+#         "link_login": ["open_url", "XXXXXX"],
+#         "privacy_policy": ["get_by_role_name", "checkbox", "I agree"],
+#         "privacy_pbutton": ["get_by_role_name", "button", "Proceed"],
+#         "user_name": ["get_by_role_name", "textbox_a", "Enter your email or username", "XXXXXX"],
+#         "password": ["get_by_role_name", "textbox_b", "Password", "XXXXXX"],
+#         "btn_sign_in": ["get_by_role_name", "button", "SIGN IN"]
+#     }
+# }
+#
+# ecp_action_data = {
+#         "login": {
+#             "link_login": [
+#                 1,
+#                 "url"
+#             ],
+#             "user_name": [
+#                 3,
+#                 "001"
+#             ],
+#             "password": [
+#                 3,
+#                 "001"
+#             ]
+#         }
+# }
+#
+# for key, value in ecp_action_data["login"].items():
+#     ecp_action_map["login"][key][value[0]] = value[1]
+#
+# print(ecp_action_map)
 
 
 #
@@ -157,3 +158,108 @@ print(ecp_action_map)
 #         get_active_sheet.cell(row=CellRow, column=11, value=vin_data)
 #
 # get_work_book.save(open_excel_path_location)
+
+import requests
+from requests.auth import HTTPBasicAuth
+
+url = 'http://192.168.20.25:82/peza/api/v1/auth'
+username = 'cdec@dmin_J5!X3kL'
+password = 'Password_123'
+
+data = ""
+
+headers = {
+    "Authorization": "Basic Y2RlY0BkbWluX0o1IVgza0w6UGFzc3dvcmRfMTIz",
+    "Content-Lenght":"0",
+    "User-Agent": "PostmanRuntime/7.51.1",
+    # "Content-Type": "application/json",
+    "Accept": "*.*",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Cache-Control": "no-cache"
+}
+
+# response = requests.post(url,json=data,headers=headers, auth=HTTPBasicAuth(username, password))
+response = requests.post(url, auth=HTTPBasicAuth(username, password))
+
+bearer_token = response.json().get("response")["auth-token"]
+print(bearer_token)
+
+
+url_ip = 'http://192.168.20.25:82/peza/api/v1/importPermits'
+
+
+
+headers_ip = {
+    "Authorization": f"Bearer {bearer_token}",
+    "Accept": "application/json"  # Optional: specify expected response format
+}
+
+json_payload = {
+    "Vasp_code": "VS3PZ9QY",
+    "Date_applied": "2026-03-08 14:23:40",
+    "Date_created": "2026-03-08 13:39:47",
+    "Application_number": "IP-TII10775-IT001",
+    "Locator": {
+        "Locator_tin": "005-865-295-000",
+        "Locator_zone": "CLTI",
+        "Enterprise_type": "EE"
+    },
+    "Broker": {
+        "Broker_tin": "738-464-204-000"
+    },
+    "Shipper": {
+        "Shipper_name": "TEXAS INS PHILS, INC.",
+        "Shipper_address": "GENERAL JUAN DELA CRUZ STREET, SGT. MARLBORO DRIVE, PHILIP MORRIS, LUCKY CITY"
+    },
+    "Purpose": "FOR PRODUCTION USE",
+    "Delivery_address": "SM ICITY 3 - SMI3",
+    "Remarks": "STANDARD DELIVERY",
+    "Way_bill_number": "BL-ALO28392-IT001",
+    "Payment_method": 1,
+    "Origin": "CN",
+    "Port": "P02A",
+    "Departure_date": "2026-03-01",
+    "Arrival_date": "2026-03-08",
+    "Registry_no": "AAA0001-26",
+    "Invoices_nos": "INV-TII10775-IT001",
+    "Status": "PAID",
+    "Receipt_number": "RNO-TII10775-IT001",
+    "Receipt_date": "2026-03-13 13:39:47",
+    "Payment_ref_no": "TII10775-IT001",
+    "Processing_fee": 2000,
+    "Exchange_Rate": 58.62,
+    "Currency": "USD",
+    "Items": [
+        {
+            "Id": [
+                "TII10775-13850-1584203"
+            ],
+            "Description": "PC 8608.0020.000 I-0004",
+            "Uom": "OT",
+            "Item_use": "FOR PRODUCTION USE",
+            "Purchase_order_number": "",
+            "Quantity": 987,
+            "Invoice_value": 654,
+            "Gross_weight": 321,
+            "Other_uom": "PLT"
+        },
+        {
+            "Id": [
+                "TII10775-13850-1584204"
+            ],
+            "Description": "PC 8608.0020.000 I-0004",
+            "Uom": "OT",
+            "Item_use": "FOR PRODUCTION USE",
+            "Purchase_order_number": "",
+            "Quantity": 987,
+            "Invoice_value": 654,
+            "Gross_weight": 321,
+            "Other_uom": "PLT"
+        }
+    ]
+}
+
+response_ip = requests.post(url_ip, headers=headers_ip, json=json_payload)
+
+print(response_ip.json())
