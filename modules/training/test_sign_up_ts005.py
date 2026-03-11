@@ -1,6 +1,6 @@
 import pytest, re
 from modules.frame_work.utility.utility_package import UtilityPackage
-from modules.testcases.ptops.sign_up_page import SignUpPageClass
+from modules.testcases.ptops.page_objects.sign_up_page import SignUpPageClass
 @pytest.mark.usefixtures("setup")
 class TestSignUpTestSuite0001:
     @pytest.fixture(scope="function", autouse=True)

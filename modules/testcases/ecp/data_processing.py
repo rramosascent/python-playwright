@@ -1,6 +1,6 @@
 from modules.testcases.ecp.data import DictionaryData
 from modules.frame_work.framework_package.playwright_fw import FrameWorkPWDriver
-from modules.testcases.ptops.berms_page import TestExecutionClass
+from modules.testcases.ptops.page_objects.berms_page import TestExecutionClass
 from modules.frame_work.utility.utility_package import UtilityPackage
 from modules.testcases.ecp.api_processing import EcoConsumptionApi
 class DataProcessingClass(FrameWorkPWDriver):

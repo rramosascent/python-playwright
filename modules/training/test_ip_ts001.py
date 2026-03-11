@@ -1,6 +1,6 @@
 import pytest, re
 from modules.frame_work.utility.utility_package import UtilityPackage
-from modules.testcases.ptops.api_import_permit import PtopsIpXml
+from modules.testcases.ptops.page_objects.api_import_permit import PtopsIpXml
 @pytest.mark.usefixtures("setup")
 class TestIPTestSuite0001:
 
