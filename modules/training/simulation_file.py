@@ -162,38 +162,108 @@
 import requests
 from requests.auth import HTTPBasicAuth
 
-url = 'http://192.168.20.25:82/peza/api/v1/auth'
-username = 'cdec@dmin_J5!X3kL'
-password = 'Password_123'
+# url = 'http://192.168.20.25:82/peza/api/v1/auth'
+# username = 'cdec@dmin_J5!X3kL'
+# password = 'Password_123'
+#
+# data = ""
+#
+# headers = {
+#     "Authorization": "Basic Y2RlY0BkbWluX0o1IVgza0w6UGFzc3dvcmRfMTIz",
+#     "Content-Lenght":"0",
+#     "User-Agent": "PostmanRuntime/7.51.1",
+#     # "Content-Type": "application/json",
+#     "Accept": "*.*",
+#     "Accept-Encoding": "gzip, deflate, br",
+#     "Connection": "keep-alive",
+#     "Cache-Control": "no-cache"
+# }
+#
+# # response = requests.post(url,json=data,headers=headers, auth=HTTPBasicAuth(username, password))
+# response = requests.post(url, auth=HTTPBasicAuth(username, password))
+#
+# bearer_token = response.json().get("response")["auth-token"]
+# print(bearer_token)
+#
+#
+# url_ip = 'http://192.168.20.25:82/peza/api/v1/importPermits'
+#
+#
+#
+# headers_ip = {
+#     "Authorization": f"Bearer {bearer_token}",
+#     "Accept": "application/json"  # Optional: specify expected response format
+# }
+#
+# json_payload = {
+#     "Vasp_code": "VS3PZ9QY",
+#     "Date_applied": "2026-03-08 14:23:40",
+#     "Date_created": "2026-03-08 13:39:47",
+#     "Application_number": "IP-TII10775-IT001",
+#     "Locator": {
+#         "Locator_tin": "005-865-295-000",
+#         "Locator_zone": "CLTI",
+#         "Enterprise_type": "EE"
+#     },
+#     "Broker": {
+#         "Broker_tin": "738-464-204-000"
+#     },
+#     "Shipper": {
+#         "Shipper_name": "TEXAS INS PHILS, INC.",
+#         "Shipper_address": "GENERAL JUAN DELA CRUZ STREET, SGT. MARLBORO DRIVE, PHILIP MORRIS, LUCKY CITY"
+#     },
+#     "Purpose": "FOR PRODUCTION USE",
+#     "Delivery_address": "SM ICITY 3 - SMI3",
+#     "Remarks": "STANDARD DELIVERY",
+#     "Way_bill_number": "BL-ALO28392-IT001",
+#     "Payment_method": 1,
+#     "Origin": "CN",
+#     "Port": "P02A",
+#     "Departure_date": "2026-03-01",
+#     "Arrival_date": "2026-03-08",
+#     "Registry_no": "AAA0001-26",
+#     "Invoices_nos": "INV-TII10775-IT001",
+#     "Status": "PAID",
+#     "Receipt_number": "RNO-TII10775-IT001",
+#     "Receipt_date": "2026-03-13 13:39:47",
+#     "Payment_ref_no": "TII10775-IT001",
+#     "Processing_fee": 2000,
+#     "Exchange_Rate": 58.62,
+#     "Currency": "USD",
+#     "Items": [
+#         {
+#             "Id": [
+#                 "TII10775-13850-1584203"
+#             ],
+#             "Description": "PC 8608.0020.000 I-0004",
+#             "Uom": "OT",
+#             "Item_use": "FOR PRODUCTION USE",
+#             "Purchase_order_number": "",
+#             "Quantity": 987,
+#             "Invoice_value": 654,
+#             "Gross_weight": 321,
+#             "Other_uom": "PLT"
+#         },
+#         {
+#             "Id": [
+#                 "TII10775-13850-1584204"
+#             ],
+#             "Description": "PC 8608.0020.000 I-0004",
+#             "Uom": "OT",
+#             "Item_use": "FOR PRODUCTION USE",
+#             "Purchase_order_number": "",
+#             "Quantity": 987,
+#             "Invoice_value": 654,
+#             "Gross_weight": 321,
+#             "Other_uom": "PLT"
+#         }
+#     ]
+# }
+#
+# response_ip = requests.post(url_ip, headers=headers_ip, json=json_payload)
+#
+# print(response_ip.json())
 
-data = ""
-
-headers = {
-    "Authorization": "Basic Y2RlY0BkbWluX0o1IVgza0w6UGFzc3dvcmRfMTIz",
-    "Content-Lenght":"0",
-    "User-Agent": "PostmanRuntime/7.51.1",
-    # "Content-Type": "application/json",
-    "Accept": "*.*",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Connection": "keep-alive",
-    "Cache-Control": "no-cache"
-}
-
-# response = requests.post(url,json=data,headers=headers, auth=HTTPBasicAuth(username, password))
-response = requests.post(url, auth=HTTPBasicAuth(username, password))
-
-bearer_token = response.json().get("response")["auth-token"]
-print(bearer_token)
-
-
-url_ip = 'http://192.168.20.25:82/peza/api/v1/importPermits'
-
-
-
-headers_ip = {
-    "Authorization": f"Bearer {bearer_token}",
-    "Accept": "application/json"  # Optional: specify expected response format
-}
 
 json_payload = {
     "Vasp_code": "VS3PZ9QY",
@@ -260,6 +330,13 @@ json_payload = {
     ]
 }
 
-response_ip = requests.post(url_ip, headers=headers_ip, json=json_payload)
+class get_broker():
+    def __init__(self, payload):
+        self.payload = payload
+        self.get_broker_data = payload["Broker"]
+        self.broker_tin = self.get_broker_tin()
+    def get_broker_tin(self):
+        return self.get_broker_data ["Broker_tin"]
 
-print(response_ip.json())
+broker_info = get_broker(json_payload)
+print(broker_info.broker_tin)
