@@ -1,6 +1,6 @@
 from modules.testcases.ecp.data import DictionaryData
 from modules.frame_work.framework_package.playwright_fw import FrameWorkPWDriver
-from modules.testcases.ptops.page_objects.berms_page import TestExecutionClass
+from modules.testcases.ptops.page_objects.berms_page import BermsPageObjects
 from modules.frame_work.utility.utility_package import UtilityPackage
 from modules.testcases.ecp.api_processing import EcoConsumptionApi
 class DataProcessingClass(FrameWorkPWDriver):
@@ -27,7 +27,7 @@ class DataProcessingClass(FrameWorkPWDriver):
 
     def data_processing_func_peza(self, data_file):
 
-        test_data = TestExecutionClass(self.driver)
+        test_data = BermsPageObjects(self.driver)
 
         for data_key, data_value in data_file.items():
 

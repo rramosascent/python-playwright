@@ -1,307 +1,280 @@
 import pytest, re
 from modules.testcases.ecp.data_processing import DataProcessingClass
-
-# @pytest.mark.usefixtures("setup")
-# # def test_ecp(playwright: Playwright) -> None:
-# class TestSuite001a():
-#     def initiate_test_data(self):
-#         return TestExecutionClass(self.driver)
-#
-#     def execute_login_to_ptops(self) -> None:
-#         print('test')
-#         # self.initiate_test_data().login_to_ptops('url')
+from modules.frame_work.utility.utility_package import UtilityPackage
+from modules.testcases.ptops.page_objects.login import LoginPage
+from modules.testcases.ptops.page_objects.berms_page import BermsPageObjects
+from modules.testcases.ptops.data_objects.ptops_data_sets import DataSetCompilationBERMS
+from modules.testcases.ptops.data_objects.ptops_data_objects import DataObjectBERMS
 
 @pytest.mark.usefixtures("setup")
 # def test_ecp(playwright: Playwright) -> None:
-class TestSuite0001():
+class TestSuiteBERMS001():
     # @pytest.fixture(autouse=True)
+    @pytest.fixture(scope="function", autouse=True)
+    def before_each_after_each(self):
+        print("before the test runs")
+        # Go to the starting url before each test.
+        global data_set, application_counter, pg, data_obj, berms
+        pg = LoginPage(self.driver)
+        berms = BermsPageObjects(self.driver)
+        application_counter = UtilityPackage().padd_zeroes_2(1)
+        data_set = DataSetCompilationBERMS().ds_test_berms_ts002
+        data_obj = DataObjectBERMS(self.driver, data_set)
+        yield
+        print("after the test runs")
+        # self.driver.wait_for_timeout(10000)
+
     def initiate_test_data(self):
         return DataProcessingClass(self.driver)
 
-    def test_ecp_login(self) -> None:
-        login_data = {
-            "link_login": ["open_url", "url"],
-            "user_name": ["get_by_role_name", "textbox_a", "Username", "001"],
-            "password": ["get_by_role_name", "textbox_b", "Password", "001"],
-            "btn_sign_in": ["get_by_role_name", "button", "Sign in"],
-            "verify_login_success": ["expect_by_role_name", "link", " Applications & Accreditations"],
-        }
-        self.initiate_test_data().data_processing_func_peza(login_data)
+    def test_ptops_login(self) -> None:
+        pg.get_ptops_url(data_obj.link_reference)
+        pg.get_user_name(data_obj.username_reference)
+        pg.get_pass_word(data_obj.password_reference)
+        pg.proceed_ptops_login()
+        pg.verify_link_berms()
 
     def test_create_new_berms(self) -> None:
-        data_element_action = {
-            "lnk_apps_accre": ["get_by_role_name", "link", " Applications & Accreditations"],
-            "verify_new_bersm_button": ["expect_by_role_name", "button", "+ New Ecozone Enterprise"],
-            "btn_new_berms_apps": ["get_by_role_name", "button", "+ New Ecozone Enterprise"],
-            "verify_undertaking_link:": ["expect_by_role_name", "link", "Undertaking"],
-            "chbx_agree_ut": ["get_by_role_name", "checkbox", "I Agree"],
-            "verify_btn_proceed_ut:": ["get_by_location", "expect", "#btnSubmitUndertaking"],
-            "btn_proceed_ut:": ["get_by_location", "click", "#btnSubmitUndertaking"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+        berms.menu_list.click_lnk_apps_accre()
+        berms.menu_list.verify_new_berms_button()
+        berms.menu_list.click_btn_new_berms_apps()
+        berms.menu_list.verify_undertaking_link()
+        berms.menu_list.check_chbx_agree_ut()
+        berms.menu_list.verify_btn_proceed_e()
+        berms.menu_list.click_btn_proceed_c()
 
-    def test_create_new_berms_application(self) -> None:
-        data_element_action = {
-            "opt_app_type": ["get_by_role_combox_select", "#select2-applicationTypeId-container","NEW ECOZONE ENTERPRISE"],
-            "rbtn_type_ezone": ["get_by_role_name","radio_b", "Domestic Market"],
-            "opt_psic_classification": ["get_by_role_combox_select", "#select2-sectionCodeId-container","Accommodation and Food Service Activities"],
-            "opt_psic_division": ["get_by_role_combox_select", "#select2-divisionCodeId-container","[56] FOOD AND BEVERAGE SERVICE ACTIVITIES"],
-            "opt_psic_group": ["get_by_role_combox_select", "#select2-groupCodeId-container","[563] Beverage serving activities"],
-            "opt_psic_class": ["get_by_role_combox_select", "#select2-classesCodeId-container","[5630] Beverage serving activities"],
-            "opt_psic_sub_class": ["get_by_role_combox_select", "#select2-subClassesCodeId-container","[56309] Other beverage serving activities, n.e.c."],
-            "btn_proceed_app": ["get_by_role_name", "button", "Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+    def test_create_new_berms_application_1(self) -> None:
+        berms.application.select_opt_app_type(data_obj.app_det_type)
+        berms.application.select_rbtn_type_ezone(data_obj.app_loc_type)
+        berms.application.select_opt_psic_classification(data_obj.app_psic_class)
 
-    def test_create_new_berms_company_pesonal_info(self) -> None:
-        data_element_action = {
-            "txt_company_name": ["get_by_role_name", "textbox_a", "Company Name", "DOMESTIC COMPANY NAME TESTING 016"],
-            "txt_nature_business": ["get_by_role_name", "textbox_a", "Nature of Business", "NATURE OF BUSINESS TESTING 016"],
-            "txt_company_profile": ["get_by_role_name", "textbox_a", "Company Profile", "COMPANY PROFILE TESTING 016"],
-            "btn_san_company_person_info": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+    def test_create_new_berms_application_2(self) -> None:
+        berms.application.select_opt_psic_division(data_obj.app_psic_division)
+        berms.application.select_opt_psic_div_group(data_obj.app_psic_div_group)
+        berms.application.select_opt_psic_div_class(data_obj.app_psic_div_class)
+        berms.application.select_opt_psic_div_subclass(data_obj.app_psic_div_subclass)
+        berms.application.click_btn_proceed_app()
 
-    def test_create_new_berms_company_proposed_project(self) -> None:
-        data_element_action = {
-            "btn_proposed_project": ["get_by_location", "click", "#btnBusinessProduct"],
-            "txt_proposed_project": ["get_by_location_fill_b", "#newBusinessProductActivity", "NEW PRODUCT ACTIVITY DOMESTIC COMPANY 016"],
-            "btn_proposed_project_add": ["get_by_role_name", "button", " Add"],
-            "txt_proposed_project_desc": ["get_by_role_name", "textbox_b", "* Description:", "NEW PRODUCT ACTIVITY DOMESTIC COMPANY 016 DESCRIPTION"],
-            "txt_proposed_project_desc_uses": ["get_by_role_name", "textbox_b", "* Uses/Application:", "USES AND APPLICATION NEW PRODUCT ACTIVITY DOMESTIC COMPANY 016"],
-            # "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
-            "add_proposed_project_permit": ["get_by_file_chooser", "#activity_product_img_documentsDropzone", r"Testing_document.png"],
-            "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
+    def test_create_new_berms_company_personal_info(self) -> None:
+        berms.company_info.input_txt_company_name(data_obj.ci_company_name)
+        berms.company_info.input_txt_nature_business(data_obj.ci_nature_business)
+        berms.company_info.input_txt_company_profile(data_obj.ci_company_profile)
+        berms.company_info.click_btn_proceed()
 
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+    def test_create_new_berms_company_proposed_project_1(self) -> None:
+        berms.company_proposed_project.click_btn_proposed_project()
+        berms.company_proposed_project.input_txt_proposed_project(data_obj.propose_project)
+        berms.company_proposed_project.click_btn_proposed_project_add()
 
-    def test_create_new_berms_existing_business_reg(self) -> None:
-        data_element_action = {
-            "date_proposed_registration_date": ["get_by_role_name", "row_dp", "Securities & Exchange","DD-MMM-YYYY","2016-01-11"],
-            "txt_proposed_registration_no": ["get_by_location", "fill", "input[name=\"businessRegInfoAppsBean[0].reg_no\"]","REG-2025-002"],
-            "txt_proposed_sec_primary_purpose": ["get_by_role_name", "textbox_b", "Sec Primary Purpose","SEC PRIMARY PURPOSE 002"],
-            "txt_proposed_authorized_amount": ["get_by_role_name", "textbox_b", "Authorized Amount (PHP)","99999999999"],
-            "txt_proposed_subscribed_amount": ["get_by_role_name", "textbox_b", "Subscribe Amount (PHP)","99999999999"],
-            "txt_proposed_paid-up_amount": ["get_by_role_name", "textbox_b", "* Paid-up Amount (PHP):","99999999999"],
-            "btn_proposed_existing_registration_next": ["get_by_role_name", "button", "Save and Proceed"]
-            # "add_proposed_project_permit": ["get_by_file_chooser", "choose a file", r"Testing_document.png"],
-            # "btn_proposed_project_save_next": ["get_by_role_name", "button", "Save and Proceed"]
+    def test_create_new_berms_company_proposed_project_2(self) -> None:
+        berms.company_proposed_project.input_txt_description(data_obj.proposed_project_desc)
+        berms.company_proposed_project.input_txt_desc_uses(data_obj.project_desc_uses)
+        berms.company_proposed_project.file_add_permit(data_obj.proposed_project_permit)
+        berms.company_proposed_project.click_btn_save_next()
 
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+    def test_create_new_berms_existing_business_reg_1(self) -> None:
 
-    def test_create_new_berms_stockholder_reg(self) -> None:
-        data_element_action = {
-            "txt_proposed_stockholder_type": ["get_by_role_name", "radio_b", "Corporate"],
-            # "txt_proposed_stockholder_type1": ["get_by_role_name", "radio_b", "Person"],
-            "btn_proposed_stockholder_add": ["get_by_title_click", "Add Stockholder"],
-            "txt_proposed_stockholder_company_name": ["get_by_role_name", "textbox_b", "Company Name *", "COMPANY NAME CORP"],
-            "txt_proposed_stockholder_nationality": ["get_by_role_combox_select","#select2-proposedStockholderNationalityId-container","Finnish"],
-            "txt_proposed_stockholder_no_shares": ["get_by_role_name", "textbox_b", "No. of Shares *","1280"],
-            "txt_proposed_stockholder_subscribed": ["get_by_role_name", "textbox_b", "Amount Subscribe (PHP) *","1281"],
-            "txt_proposed_stockholder_amount_paid": ["get_by_role_name", "textbox_b", "Amount Paid-up (PHP) *","1282"],
-            "txt_proposed_stockholder_amount_add_proceed": ["get_by_role_name", "button", " Add"],
-            "txt_proposed_stockholder_item": ["get_by_location","click","#isListedStockholder1"],
-            "txt_proposed_stockholder_item1": ["get_by_location","click","#isListedStockholder2"],
-            # "txt_proposed_stockholder_item1": ["get_by_location","filter_th_click","#stockholderWrapper div","Not Applicable","1"],
-            "btn_proposed_principal_officer_add": ["get_by_title_click","Add Principal Officer"],
-            "opt_proporse_principal_officer_salutation": ["get_by_role_combox_select","#select2-officerSalutationId-container","Mr."],
-            "txt_proporse_principal_officer_fname": ["get_by_role_name", "textbox_b", "* First Name","PRNCIPAL FNAME"],
-            "txt_proporse_principal_officer_mname": ["get_by_role_name", "textbox_b", "Middle Name (Optional)",""],
-            "txt_proporse_principal_officer_lname": ["get_by_role_name", "textbox_b", "* Last Name", "PRINCIPAL LNAME"],
-            "txt_proporse_principal_officer_position": ["get_by_location", "fill", "#officerPosition","PRESIDENT"],
-            "btn_proposed_principal_officer_add_proceed": ["get_by_role_name", "button"," Add"],
-            "btn_proposed_principal_officer_save_next": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+        berms.existing_bus_reg.pick_dp_registration_date(data_obj.registration_date)
+        berms.existing_bus_reg.input_txt_registration_no(data_obj.registration_no)
+        berms.existing_bus_reg.input_txt_sec_primary_purpose(data_obj.sec_primary_purpose)
 
-    def test_create_new_berms_manpower_timetable(self) -> None:
-        data_element_action = {
-            "dp_timetable_bld_construction_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[1]/input[2])","11/1/2028"],
-            "dp_timetable_bld_construction_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[1]/div/div/div[2]/div[2]/input[2])","9/1/2030"],
-            "dp_timetable_bld_procurement_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[1]/input[2])","2/1/2028"],
-            "dp_timetable_bld_procurement_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[1]/div[2]/div/div/div[2]/div[2]/input[2])","1/1/2030"],
-            "dp_timetable_bld_installation_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[1]/input[2])","10/1/2028"],
-            "dp_timetable_bld_installation_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[1]/div/div/div[2]/div[2]/input[2])","8/1/2030"],
-            "dp_timetable_bld_hiring_fr": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[2]/div/div/div[2]/div[1]/input[2])","12/1/2028"],
-            "dp_timetable_bld_hiring_to": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/input[2])","11/1/2030"],
-            "dp_timetable_bld_start_commercial": ["select_date_picker_v1", "xpath=(//div[@id=\"manpower-and-timetable\"]/div[2]/div[3]/div/div/div/div[2]/div/input[2])","2/1/2031"],
-            "txt_timetable_bld_service0": ["get_by_location", "fill", "#servicePersonnelCount0", "10"],
-            "txt_timetable_bld_service1": ["get_by_location", "fill", "#servicePersonnelCount1", "20"],
-            "txt_timetable_bld_service2": ["get_by_location", "fill", "#servicePersonnelCount2", "100"],
-            "txt_timetable_bld_indirect0": ["get_by_location", "fill", "#indirectPersonnelCount0", "10"],
-            "txt_timetable_bld_indirect1": ["get_by_location", "fill", "#indirectPersonnelCount1", "20"],
-            "txt_timetable_bld_indirect2": ["get_by_location", "fill", "#indirectPersonnelCount2", "100"],
-            "txt_timetable_bld_admin0": ["get_by_location", "fill", "#adminPersonnelCount0", "100"],
-            "txt_timetable_bld_admin1": ["get_by_location", "fill", "#adminPersonnelCount1", "100"],
-            "txt_timetable_bld_admin2": ["get_by_location", "fill", "#adminPersonnelCount2", "100"],
-            "btn_timetable_bld_save_proceed": ["get_by_role_name", "button", "Save and Proceed"]
+    def test_create_new_berms_existing_business_reg_2(self) -> None:
+        berms.existing_bus_reg.input_txt_authorized_amount(data_obj.authorized_amount)
+        berms.existing_bus_reg.input_txt_subscribed_amount(data_obj.subscribed_amount)
+        berms.existing_bus_reg.input_txt_paid_up_amount(data_obj.reg_paid_up_amount)
+        berms.existing_bus_reg.click_btn_save_next()
 
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+    def test_create_new_berms_stockholder_reg_1(self) -> None:
+        berms.stock_holder_principal_officer.tick_rb_stockholder_type(data_obj.stockholder_type)
+        berms.stock_holder_principal_officer.click_btn_stockholder_add()
+        berms.stock_holder_principal_officer.input_txt_stockholder_company_name(data_obj.stockholder_name)
+        berms.stock_holder_principal_officer.input_txt_stockholder_company_nationality(data_obj.stockholder_nationality)
+        berms.stock_holder_principal_officer.input_txt_stockholder_no_shares(data_obj.stockholder_no_shares)
+        berms.stock_holder_principal_officer.input_txt_amount_subscribed(data_obj.amount_subscribed)
+        berms.stock_holder_principal_officer.input_txt_amount_paid_up(data_obj.amount_paid_up)
+        berms.stock_holder_principal_officer.click_btn_stockholder_add_proceed()
+
+
+    def test_create_new_berms_stockholder_reg_2(self) -> None:
+        berms.stock_holder_principal_officer.click_rb_proposed_stockholder_item()
+        berms.stock_holder_principal_officer.click_rb_proposed_stockholder_item_1()
+        berms.stock_holder_principal_officer.click_btn_principal_officer_add()
+        berms.stock_holder_principal_officer.select_opt_officer_salutation(data_obj.officer_salutation)
+        berms.stock_holder_principal_officer.input_txt_officer_fname(data_obj.officer_fname)
+        berms.stock_holder_principal_officer.input_txt_officer_mname(data_obj.officer_mname)
+        berms.stock_holder_principal_officer.input_txt_officer_lname(data_obj.officer_lname)
+        berms.stock_holder_principal_officer.input_txt_officer_position(data_obj.officer_position)
+        berms.stock_holder_principal_officer.click_btn_officer_add_proceed()
+        berms.stock_holder_principal_officer.click_btn_save_next()
+
+    def test_create_new_berms_manpower_timetable_1(self) -> None:
+        berms.manpower_timetable.pick_dp_bld_construction_fr(data_obj.construction_start)
+        berms.manpower_timetable.pick_dp_bld_construction_to(data_obj.construction_end)
+        berms.manpower_timetable.pick_dp_bld_procurement_fr(data_obj.procurement_start)
+        berms.manpower_timetable.pick_dp_bld_procurement_to(data_obj.procurement_end)
+
+    def test_create_new_berms_manpower_timetable_2(self) -> None:
+        berms.manpower_timetable.pick_dp_installation_fr(data_obj.installation_start)
+        berms.manpower_timetable.pick_dp_installation_to(data_obj.installation_end)
+        berms.manpower_timetable.pick_dp_hiring_fr(data_obj.hiring_start)
+        berms.manpower_timetable.pick_dp_hiring_to(data_obj.hiring_end)
+        berms.manpower_timetable.pick_dp_commercial_start(data_obj.commercial_start)
+
+    def test_create_new_berms_manpower_timetable_3(self) -> None:
+        berms.manpower_timetable.input_txt_manpower_01_service(data_obj.manpower_01_service)
+        berms.manpower_timetable.input_txt_manpower_01_indirect(data_obj.manpower_01_indirect)
+        berms.manpower_timetable.input_txt_manpower_01_admin(data_obj.manpower_01_admin)
+
+    def test_create_new_berms_manpower_timetable_4(self) -> None:
+
+        berms.manpower_timetable.input_txt_manpower_02_service(data_obj.manpower_02_service)
+        berms.manpower_timetable.input_txt_manpower_02_indirect(data_obj.manpower_02_indirect)
+        berms.manpower_timetable.input_txt_manpower_02_admin(data_obj.manpower_02_admin)
+
+    def test_create_new_berms_manpower_timetable_5(self) -> None:
+        berms.manpower_timetable.input_txt_manpower_03_service(data_obj.manpower_03_service)
+        berms.manpower_timetable.input_txt_manpower_03_indirect(data_obj.manpower_03_indirect)
+        berms.manpower_timetable.input_txt_manpower_03_admin(data_obj.manpower_03_admin)
+        berms.manpower_timetable.click_btn_save_proceed()
 
     def test_create_new_berms_manu_servi_flow(self) -> None:
-        data_element_action = {
-            "txt_desrcibe_manufacturing_name": ["get_by_role_name", "textbox_a", "Describe the Manufacturing","MANUFACTURING PROCESS SERVICE FLOW TESTING 005"],
-            # "add_diagram_process_flow": ["get_by_file_chooser", "Click Here", r"Testing_document.png"],
-            "add_diagram_process_flow": ["get_by_file_chooser", "#addtlInfo_supporting_documentsDropzone", r"Testing_document.png"],
-            "btn_manu_servi_flow_proceed": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+        berms.manufacturing_service_flow.input_txt_desrcibe_manufacturing_name(data_obj.manufacturing_pf_name)
+        berms.manufacturing_service_flow.file_add_diagram_process_flow(data_obj.process_flow_diagram)
+        berms.manufacturing_service_flow.click_btn_save_proceed()
 
     def test_create_new_berms_m_rp_p_schedule_add_machinery_equipment(self) -> None:
-        data_element_action = {
-            "btn_machinery_equipment_add": ["get_by_title_click", "Machinery/Equipments"],
-            "txt_machinery_equipment_description": ["get_by_role_name", "textbox_b", "* Item Description", "DESCRIPTION 001"],
-            "txt_machinery_equipment_quantity": ["get_by_location", "fill", "#itemQty", "100000"],
-            "txt_machinery_equipment_cost": ["get_by_location", "fill", "#itemUnitCost", "100"],
-            "opt_machinery_equipment_source": ["get_by_role_combox_select", "#select2-itemSource-container","IMPORTED"],
-            "opt_machinery_equipment_origin": ["get_by_role_combox_select", "#select2-originId-container","[DE] Germany"],
-            "btn_machinery_equipment_save_new": ["get_by_role_name", "button", " Save & Add New"],
-            "btn_machinery_equipment_cancel": ["get_by_role_name", "button", "Close"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+
+        berms.machinery_raw_mat_prod_schedule.click_btn_machinery_equipment_add()
+        berms.machinery_raw_mat_prod_schedule.input_txt_machinery_equipment_description(data_obj.item_description_m1)
+        berms.machinery_raw_mat_prod_schedule.input_txt_machinery_equipment_quantity(data_obj.item_quantity_m1)
+        berms.machinery_raw_mat_prod_schedule.input_txt_machinery_equipment_cost(data_obj.item_cost_m1)
+        berms.machinery_raw_mat_prod_schedule.select_opt_machinery_equipment_source(data_obj.item_source_m1)
+        berms.machinery_raw_mat_prod_schedule.select_opt_machinery_equipment_origin(data_obj.item_origin_m1)
+        berms.machinery_raw_mat_prod_schedule.click_btn_save_new()
+        berms.machinery_raw_mat_prod_schedule.click_btn_cancel()
+
+
 
     def test_create_new_berms_m_rp_p_schedule_add_materials(self) -> None:
-        data_element_action = {
-            "btn_raw_mats_fin_products_add": ["get_by_title_click", "Raw Material/Semi Finished"],
-            "txt_raw_mats_fin_products_description": ["get_by_role_name", "textbox_b", "* Item Description","ITEM DESCRIPTION 001"],
-            "opt_raw_mats_fin_products_source": ["get_by_role_combox_select", "#select2-productSource-container","IMPORTED"],
-            "opt_raw_mats_fin_products_origin": ["get_by_role_combox_select", "#select2-productOriginId-container","[DE] Germany"],
-            "btn_raw_mats_fin_products_save_new": ["get_by_role_name", "button", " Save & Add New"],
-            "btn_raw_mats_fin_products_cancel": ["get_by_role_name", "button", "Close"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_m_rp_p_schedule_add_schedule(self) -> None:
-        data_element_action = {
-            "txt_scheudle_shifts": ["get_by_location", "fill", "#prodSchedShifts0", "3"],
-            "txt_schedule_hours_per_shift": ["get_by_location", "fill", "#prodSchedHourShifts0", "8"],
-            "txt_schedule_days_per_monthj": ["get_by_location", "fill", "#prodSchedDaysMonth0", "21"],
-            "btn_m_rp_p_schedule_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_areas_utilities_w_disposal(self) -> None:
-        data_element_action = {
-            "txt_areas_utilities_w_disposal_owner_area": ["get_by_location", "fill", "#total_area_sqm", "5765"],
-            "opt_areas_utilities_w_disposal_location": ["get_by_role_combox_select", "#select2-zoneId-container","[2CYV] [24]7 PLAZA"],
-            "opt_areas_utilities_w_disposal_region": ["get_by_role_combox_select", "#select2-zone_addressRegionId-container","NATIONAL CAPITAL REGION (NCR)"],
-            "opt_areas_utilities_w_disposal_province": ["get_by_role_combox_select", "#select2-zone_addressProvinceId-container","METRO MANILA"],
-            "opt_areas_utilities_w_disposal_city": ["get_by_role_combox_select", "#select2-zone_addressCityId-container","CALOOCAN CITY"],
-            "opt_areas_utilities_w_disposal_barangay": ["get_by_role_combox_select", "#select2-zone_addressBarangayId-container","BARANGAY 1"],
-            "txt_areas_utilities_w_disposal_street": ["get_by_role_name", "textbox_b", "Street Name","STREET NAME TEST INPUT 001"],
-            "txt_areas_utilities_w_disposal_unitowner_Fname": ["get_by_location", "fill", "#unitOwnerFirstname", "UNIT OWNER FNAME"],
-            "txt_areas_utilities_w_disposal_unitowner_lname": ["get_by_location", "fill", "#unitOwnerLastname", "UNIT OWNER LNAME"],
-            "txt_areas_utilities_w_disposal_lotowner_fname": ["get_by_location", "fill", "#lotOwnerFirstname", "LOT OWNER LNAME"],
-            "txt_areas_utilities_w_disposal_lotowner_lname": ["get_by_location", "fill", "#lotOwnerLastname", "LOT OWNER LNAME"],
-            "txt_areas_utilities_w_disposal_lessor_fname": ["get_by_location", "fill", "#lessorFirstname", "LESSOR LNAME"],
-            "txt_areas_utilities_w_disposal_lessor_lname": ["get_by_location", "fill", "#lessorLastname", "LESSOR LNAME"],
-            "txt_areas_utilities_w_disposal_water_yr_req": ["get_by_location", "fill", "#water_yr_req", "100"],
-            "txt_areas_utilities_w_disposal_electric_yr_req": ["get_by_location", "fill", "#electric_yr_req", "999456"],
-            "txt_areas_utilities_w_disposal_waste_d_desc": ["get_by_location", "fill", "#waste_disposal_desc", "WASTE DISPOSAL DESCRIPTION"],
-            "txt_areas_utilities_w_disposal_waste_d_method": ["get_by_location", "fill", "#waste_disposal_method_desc", "DISCUSSION OF METHODS"],
-            "add_areas_utilities_w_disposal_waste_products": ["get_by_file_chooser", "#activity_wasteproducts_supporting_documentsDropzone",r"Testing_document.png"],
-            "add_areas_utilities_w_disposal_generated_waste": ["get_by_file_chooser", "#activity_generatedwaste_supporting_documentsDropzone",r"Testing_document.png"],
-            "btn_areas_utilities_w_disposal_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_market_aspec(self) -> None:
-        data_element_action = {
-            "opt_market_aspect_export_rate": ["get_by_role_combox_select", "#select2-exportPercent-container","50%"],
-            "opt_market_aspect_domestic_rate": ["get_by_role_combox_select", "#select2-importPercent-container","50%"],
-            "opt_market_aspect_country_export": ["get_by_role_combox_multiple_select", "^$","[HM] Heard Island and McDonald Islands"],
-            "txt_market_aspect_country_domestic_clients": ["get_by_location_fill_d", "#domestic_clients", "DOMESTIC CLIENTS"],
-            "txt_market_aspect_country_x_selling_price": ["get_by_location", "fill", "#export_selling_price","2354"],
-            "txt_market_aspect_country_d_selling_price": ["get_by_location", "fill", "#domestic_selling_price","4532"],
-            "opt_market_aspect_country_uom": ["get_by_role_combox_select", "#select2-projected_volume_sales_id-container","[KGM] Kilogram"],
-            # "btn_market_aspect_country_add_e_marketavv": ["get_by_title_click", "Add Export"],
-            "txt_market_aspect_country_add_e_marketavv0": ["get_by_location", "fill", "#export_marketAspectVolumeValue0", "8888"],
-            "txt_market_aspect_country_add_e_marketavv1": ["get_by_location", "fill", "#export_marketAspectVolumeValue1", "8888"],
-            "txt_market_aspect_country_add_e_marketavv2": ["get_by_location", "fill", "#export_marketAspectVolumeValue2", "8888"],
-            # "btn_market_aspect_country_add_i_marketavv": ["get_by_title_click", "Add Local"],
-            "txt_market_aspect_country_add_i_marketavv0": ["get_by_location", "fill","#import_marketAspectVolumeValue0", "7777"],
-            "txt_market_aspect_country_add_i_marketavv1": ["get_by_location", "fill","#import_marketAspectVolumeValue1", "7777"],
-            "txt_market_aspect_country_add_i_marketavv2": ["get_by_location", "fill","#import_marketAspectVolumeValue2", "7777"],
-            "btn_market_aspect_country_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_initial_project_cost(self) -> None:
-        data_element_action = {
-            "txt_initial_project_cost_construc_renov": ["get_by_location", "fill", "[name='projectCost[building_construction_renovation]']", "10"],
-            "txt_initial_project_cost_factory_tools": ["get_by_location", "fill", "[name='projectCost[factory_tools]']", "25"],
-            "txt_initial_project_cost_transportation": ["get_by_location", "fill", "[name='projectCost[transporation]']", "25"],
-            "txt_initial_project_cost_office_equipment": ["get_by_location", "fill", "[name='projectCost[office_equipment]']", "37"],
-            "txt_initial_project_cost_other_assets": ["get_by_location", "fill", "[name='projectCost[other_assets]']", "1000"],
-            "txt_initial_project_cost_operating_expenses": ["get_by_location", "fill", "[name='projectCost[operating_expenses]']", "28"],
-            "txt_initial_project_cost_working_capital": ["get_by_location", "fill", "[name='projectCost[working_capital]']", "100"],
-            "txt_initial_project_cost_equity": ["get_by_location", "fill", "[name='fund_source[0][amount]']", "10001000"],
-            "opt_initial_project_cost_fund_source_1": ["get_by_location_option_select", "#fundSource2", "Foreign Loan"],
-            "txt_initial_project_cost_add_equity": ["get_by_location", "fill", "[name='fund_source[1][amount]']", "100"],
-            "opt_initial_project_cost_fund_source_2": ["get_by_location_option_select", "#fundSource3", "Local Loan"],
-            "txt_initial_project_cost_advances": ["get_by_location", "fill", "[name='fund_source[2][amount]']", "100"],
-            "txt_initial_project_cost_loans": ["get_by_location_fill_c", "[name='fund_source[3][amount]']", "25"],
-            "btn_initial_project_cost_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_supporting_documents_1(self) -> None:
-        data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnerund8",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerby_law7",r"Testing_document.png"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_supporting_documents_2(self) -> None:
-        data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInneraoi6",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnergis5",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerpfs4", r"Testing_document.xlsx"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_supporting_documents_3(self) -> None:
-        data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerbir3",r"Testing_document.png"],
-            "add_supporing_documents1": ["get_by_file_chooser", "#dropzoneInnercppc2",r"Testing_document.png"],
-            "add_supporing_documents2": ["get_by_file_chooser", "#dropzoneInnerrbpo1", r"Testing_document.png"],
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_supporting_documents_4(self) -> None:
-        data_element_action = {
-            "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnercrsec0", r"Testing_document.png"],
-            "btn_add_proceed": ["get_by_role_name", "button", "Save and Proceed"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
-
-    def test_create_new_berms_submit(self) -> None:
-        data_element_action = {
-            "btn_add_submit": ["get_by_role_name", "button", "SUBMIT"],
-            "btn_add_proceed": ["get_by_role_name", "button", "Proceed"],
-            "verify_application_number": ["expect_locator","#swal2-html-container strong span"],
-            "save_application_number": ["expect_locator_inner_txt_save_to_file", "#swal2-html-container strong span"],
-            "btn_add_proceed_confirm": ["get_by_role_name", "button", "OK"]
-        }
-        self.initiate_test_data().data_processing_func_peza(data_element_action)
+        berms.machinery_raw_mat_prod_schedule.click_btn_raw_mats_fin_products_add()
+        berms.machinery_raw_mat_prod_schedule.input_txt_raw_mats_fin_products_description(data_obj.item_description_r1)
+        berms.machinery_raw_mat_prod_schedule.select_opt_raw_mats_fin_products_source(data_obj.item_source_r1)
+        berms.machinery_raw_mat_prod_schedule.select_opt_raw_mats_fin_products_origin(data_obj.item_origin_r1)
+        berms.machinery_raw_mat_prod_schedule.click_btn_save_new()
+        berms.machinery_raw_mat_prod_schedule.click_btn_cancel()
 
         # page = self.driver
         # page.wait_for_timeout(120000)
 
-        # data_element_action = {
-        #     "opt_app_type": ["get_by_location_option_select", "#applicationTypeId", "value:'2'"]
-        # }
-        # self.initiate_test_data().data_processing_func_peza(data_element_action)
+    def test_create_new_berms_m_rp_p_schedule_add_schedule(self) -> None:
+
+        berms.machinery_raw_mat_prod_schedule.input_txt_schedule_shifts(data_obj.schedule_shifts)
+        berms.machinery_raw_mat_prod_schedule.input_txt_schedule_hours_per_shift(data_obj.hours_shifts)
+        berms.machinery_raw_mat_prod_schedule.input_txt_schedule_days_per_month(data_obj.per_month)
+        berms.machinery_raw_mat_prod_schedule.click_btn_save_proceed()
+
+
+    def test_create_new_berms_areas_utilities_w_disposal_1(self) -> None:
+        berms.areas_utilities_waste_disposal.input_txt_owner_area(data_obj.au_owner_area)
+        berms.areas_utilities_waste_disposal.select_opt_location(data_obj.au_location)
+        berms.areas_utilities_waste_disposal.select_opt_region(data_obj.au_region)
+        berms.areas_utilities_waste_disposal.select_opt_province(data_obj.au_province)
+        berms.areas_utilities_waste_disposal.select_opt_city(data_obj.au_city)
+        berms.areas_utilities_waste_disposal.select_opt_barangay(data_obj.au_barangay)
+        berms.areas_utilities_waste_disposal.input_txt_street(data_obj.au_street)
+
+    def test_create_new_berms_areas_utilities_w_disposal_2(self) -> None:
+        berms.areas_utilities_waste_disposal.input_txt_unitowner_fname(data_obj.au_unitowner_fname)
+        berms.areas_utilities_waste_disposal.input_txt_unitowner_lname(data_obj.au_unitowner_lname)
+        berms.areas_utilities_waste_disposal.input_txt_lotowner_fname(data_obj.au_lotowner_fname)
+        berms.areas_utilities_waste_disposal.input_txt_lotowner_lname(data_obj.au_lotowner_lname)
+        berms.areas_utilities_waste_disposal.input_txt_lessor_fname(data_obj.au_lessor_fname)
+        berms.areas_utilities_waste_disposal.input_txt_lessor_lname(data_obj.au_lessor_lname)
+
+
+    def test_create_new_berms_areas_utilities_w_disposal_3(self) -> None:
+
+        berms.areas_utilities_waste_disposal.input_txt_water_yr_req(data_obj.au_water_per_year)
+        berms.areas_utilities_waste_disposal.input_txt_electric_yr_req(data_obj.au_electricity_per_year)
+        berms.areas_utilities_waste_disposal.input_txt_waste_d_desc(data_obj.au_disposal_description)
+        berms.areas_utilities_waste_disposal.input_txt_waste_d_method(data_obj.au_disposal_method)
+        berms.areas_utilities_waste_disposal.file_add_waste_products(data_obj.au_waste_products)
+        berms.areas_utilities_waste_disposal.file_add_generated_waste(data_obj.au_generated_waste)
+        berms.areas_utilities_waste_disposal.click_btn_save_proceed()
+
+
+    def test_create_new_berms_market_aspec_1(self) -> None:
+
+        berms.market_aspect.select_opt_export_rate(data_obj.ma_export_rate)
+        berms.market_aspect.select_opt_domestic_rate(data_obj.ma_domestic_rate)
+        berms.market_aspect.select_opt_country_export(data_obj.ma_country_export)
+        berms.market_aspect.input_txt_country_domestic_clients(data_obj.ma_domestic_clients)
+        berms.market_aspect.input_txt_country_x_selling_price(data_obj.ma_x_selling_price)
+        berms.market_aspect.input_txt_country_d_selling_price(data_obj.ma_d_selling_price)
+        berms.market_aspect.select_opt_country_uom(data_obj.ma_uom)
+
+    def test_create_new_berms_market_aspec_2(self) -> None:
+
+        berms.market_aspect.input_txt_country_add_e_marketavv0(data_obj.ma_export_vv0)
+        berms.market_aspect.input_txt_country_add_e_marketavv1(data_obj.ma_export_vv1)
+        berms.market_aspect.input_txt_country_add_e_marketavv2(data_obj.ma_export_vv2)
+        berms.market_aspect.input_txt_country_add_i_marketavv0(data_obj.ma_local_vv0)
+        berms.market_aspect.input_txt_country_add_i_marketavv1(data_obj.ma_local_vv1)
+        berms.market_aspect.input_txt_country_add_i_marketavv2(data_obj.ma_local_vv2)
+        berms.market_aspect.click_btn_save_proceed()
+
+
+    def test_create_new_berms_initial_project_cost_1(self) -> None:
+
+        berms.initial_project_cost.input_txt_construction_renovation(data_obj.initial_project_cost.construction_renovation)
+        berms.initial_project_cost.input_txt_factory_tools(data_obj.initial_project_cost.factory_tools)
+        berms.initial_project_cost.input_txt_transportation_cost(data_obj.initial_project_cost.transportation_cost)
+        berms.initial_project_cost.input_txt_office_equipment(data_obj.initial_project_cost.office_equipment)
+        berms.initial_project_cost.input_txt_other_assets(data_obj.initial_project_cost.other_assets)
+        berms.initial_project_cost.input_txt_operating_expenses(data_obj.initial_project_cost.operating_expenses)
+        berms.initial_project_cost.input_txt_working_capital(data_obj.initial_project_cost.working_capital)
+
+    def test_create_new_berms_initial_project_cost_2(self) -> None:
+
+        berms.initial_project_cost.input_txt_project_equity(data_obj.initial_project_cost.project_equity)
+        berms.initial_project_cost.select_opt_project_fund_source_1(data_obj.initial_project_cost.project_fund_source_1)
+        berms.initial_project_cost.input_txt_project_add_equity(data_obj.initial_project_cost.project_add_equity)
+        berms.initial_project_cost.select_opt_project_fund_source_2(data_obj.initial_project_cost.project_fund_source_2)
+        berms.initial_project_cost.input_txt_project_advances(data_obj.initial_project_cost.project_advances)
+        berms.initial_project_cost.input_txt_project_loans(data_obj.initial_project_cost.project_loans)
+        berms.initial_project_cost.click_btn_save_proceed()
+
+
+    def test_create_new_berms_supporting_documents_1(self) -> None:
+        berms.supporting_documents.file_add_notarized_affidavit_of_option(data_obj.supporting_documents.affidavit_of_option)
+        berms.supporting_documents.file_add_notarized_sercretarys_certificate_anti_graft(data_obj.supporting_documents.secretary_certificate_anti_graft)
+        berms.supporting_documents.file_add_notarized_applicants_undertaking(data_obj.supporting_documents.applicants_undertaking)
+
+    def test_create_new_berms_supporting_documents_2(self) -> None:
+        berms.supporting_documents.file_add_by_laws_indicating_purpose_etc(data_obj.supporting_documents.by_laws_indicating_purpose_etc)
+        berms.supporting_documents.file_add_articles_of_incorporation(data_obj.supporting_documents.articles_of_incorporation)
+        berms.supporting_documents.file_add_general_information_sheet(data_obj.supporting_documents.general_info_sheet)
+
+    def test_create_new_berms_supporting_documents_3(self) -> None:
+
+        berms.supporting_documents.file_add_20_year_projected_fin_statement(data_obj.supporting_documents.twenty_years_fin_statement)
+        berms.supporting_documents.file_add_bir_form_2303(data_obj.supporting_documents.bir_form_2303)
+        berms.supporting_documents.file_add_company_profile_of_parent_comp(data_obj.supporting_documents.company_profile_of_parent_comp)
+
+    def test_create_new_berms_supporting_documents_4(self) -> None:
+
+        berms.supporting_documents.file_add_resume_of_principal_officers(data_obj.supporting_documents.resume_of_principal_officers)
+        berms.supporting_documents.file_add_sec_certificate(data_obj.supporting_documents.sec_certificate)
+        berms.supporting_documents.click_btn_save_proceed()
+
+    def test_create_new_berms_submit(self) -> None:
+
+        berms.application_submission.click_btn_application_submit()
+        berms.application_submission.click_btn_submission_proceed()
+        berms.application_submission.verify_txt_application_number()
+        berms.application_submission.file_save_application_number()
+        berms.application_submission.click_btn_submission_proceed_confirm()
+
         # page = self.driver
-        # page.wait_for_timeout(10000)
-        #
-        # data_element_action = {
-        #     "opt_app_type": ["get_by_location_option_select", "select#applicationTypeId", "EXPANSION PROJECT OF AN EXISTING ENTERPRISE"]
-        # }
-        # self.initiate_test_data().data_processing_func_peza(data_element_action)
-        # page = self.driver
-        # page.wait_for_timeout(10000)
+        # page.wait_for_timeout(120000)

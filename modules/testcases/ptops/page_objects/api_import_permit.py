@@ -36,7 +36,7 @@ class PtopsIpXml(FrameWorkPWDriver):
         return padded_entry_num
     def get_vasp_api_key(self):
 
-        url = 'http://192.168.20.25:82/peza/api/v1/auth'
+        url = 'http://192.168.20.26:82/peza/api/v1/auth'
         username = 'cdec@dmin_J5!X3kL'
         password = 'Password_123'
 
