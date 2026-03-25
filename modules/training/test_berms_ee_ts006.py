@@ -6,16 +6,6 @@ from modules.testcases.ptops.page_objects.berms_page import BermsPageObjects
 from modules.testcases.ptops.data_objects.ptops_data_sets import DataSetCompilationBERMS
 from modules.testcases.ptops.data_objects.ptops_data_objects import DataObjectBERMS
 
-# @pytest.mark.usefixtures("setup")
-# # def test_ecp(playwright: Playwright) -> None:
-# class TestSuite001a():
-#     def initiate_test_data(self):
-#         return TestExecutionClass(self.driver)
-#
-#     def execute_login_to_ptops(self) -> None:
-#         print('test')
-#         # self.initiate_test_data().login_to_ptops('url')
-
 @pytest.mark.usefixtures("setup")
 # def test_ecp(playwright: Playwright) -> None:
 class TestSuiteBERMS001():
@@ -28,7 +18,7 @@ class TestSuiteBERMS001():
         pg = LoginPage(self.driver)
         berms = BermsPageObjects(self.driver)
         application_counter = UtilityPackage().padd_zeroes_2(1)
-        data_set = DataSetCompilationBERMS().ds_test_berms_ts001
+        data_set = DataSetCompilationBERMS().ds_test_berms_ts006
         data_obj = DataObjectBERMS(self.driver, data_set)
         yield
         print("after the test runs")
@@ -66,27 +56,27 @@ class TestSuiteBERMS001():
         berms.application.click_btn_proceed_app()
 
     def test_create_new_berms_company_personal_info(self) -> None:
-        berms.company_info.input_txt_company_name(data_obj.ci_company_name)
-        berms.company_info.input_txt_nature_business(data_obj.ci_nature_business)
-        berms.company_info.input_txt_company_profile(data_obj.ci_company_profile)
+        berms.company_info.input_txt_company_name(f"{data_obj.ci_company_name}{application_counter}")
+        berms.company_info.input_txt_nature_business(f"{data_obj.ci_nature_business}{application_counter}")
+        berms.company_info.input_txt_company_profile(f"{data_obj.ci_company_profile}{application_counter}")
         berms.company_info.click_btn_proceed()
 
     def test_create_new_berms_company_proposed_project_1(self) -> None:
         berms.company_proposed_project.click_btn_proposed_project()
-        berms.company_proposed_project.input_txt_proposed_project(data_obj.propose_project)
+        berms.company_proposed_project.input_txt_proposed_project(f"{data_obj.propose_project}{application_counter}")
         berms.company_proposed_project.click_btn_proposed_project_add()
 
     def test_create_new_berms_company_proposed_project_2(self) -> None:
-        berms.company_proposed_project.input_txt_description(data_obj.proposed_project_desc)
-        berms.company_proposed_project.input_txt_desc_uses(data_obj.project_desc_uses)
+        berms.company_proposed_project.input_txt_description(f"{data_obj.proposed_project_desc}{application_counter}")
+        berms.company_proposed_project.input_txt_desc_uses(f"{data_obj.project_desc_uses}{application_counter}")
         berms.company_proposed_project.file_add_permit(data_obj.proposed_project_permit)
         berms.company_proposed_project.click_btn_save_next()
 
     def test_create_new_berms_existing_business_reg_1(self) -> None:
 
         berms.existing_bus_reg.pick_dp_registration_date(data_obj.registration_date)
-        berms.existing_bus_reg.input_txt_registration_no(data_obj.registration_no)
-        berms.existing_bus_reg.input_txt_sec_primary_purpose(data_obj.sec_primary_purpose)
+        berms.existing_bus_reg.input_txt_registration_no(f"{data_obj.registration_no}{application_counter}")
+        berms.existing_bus_reg.input_txt_sec_primary_purpose(f"{data_obj.sec_primary_purpose}{application_counter}")
 
     def test_create_new_berms_existing_business_reg_2(self) -> None:
         berms.existing_bus_reg.input_txt_authorized_amount(data_obj.authorized_amount)
@@ -258,7 +248,7 @@ class TestSuiteBERMS001():
 
     def test_create_new_berms_supporting_documents_1(self) -> None:
         berms.supporting_documents.file_add_notarized_affidavit_of_option(data_obj.supporting_documents.affidavit_of_option)
-        berms.supporting_documents.file_add_notarized_sercretarys_certificate_anti_graft(data_obj.supporting_documents.secretary_certificate_anti_graft)
+        berms.supporting_documents.file_add_notarized_secretarys_certificate_anti_graft(data_obj.supporting_documents.secretary_certificate_anti_graft)
         berms.supporting_documents.file_add_notarized_applicants_undertaking(data_obj.supporting_documents.applicants_undertaking)
 
     def test_create_new_berms_supporting_documents_2(self) -> None:
@@ -267,13 +257,16 @@ class TestSuiteBERMS001():
         berms.supporting_documents.file_add_general_information_sheet(data_obj.supporting_documents.general_info_sheet)
 
     def test_create_new_berms_supporting_documents_3(self) -> None:
-
         berms.supporting_documents.file_add_20_year_projected_fin_statement(data_obj.supporting_documents.twenty_years_fin_statement)
         berms.supporting_documents.file_add_bir_form_2303(data_obj.supporting_documents.bir_form_2303)
         berms.supporting_documents.file_add_company_profile_of_parent_comp(data_obj.supporting_documents.company_profile_of_parent_comp)
 
     def test_create_new_berms_supporting_documents_4(self) -> None:
+        berms.supporting_documents.file_add_notarized_secretarys_certificate_anti_graft(data_obj.supporting_documents.secretary_certificate_anti_graft)
+        berms.supporting_documents.file_add_notarized_applicants_undertaking(data_obj.supporting_documents.applicants_undertaking)
+        berms.supporting_documents.file_add_by_laws_indicating_purpose_etc(data_obj.supporting_documents.by_laws_indicating_purpose_etc)
 
+    def test_create_new_berms_supporting_documents_5(self) -> None:
         berms.supporting_documents.file_add_resume_of_principal_officers(data_obj.supporting_documents.resume_of_principal_officers)
         berms.supporting_documents.file_add_sec_certificate(data_obj.supporting_documents.sec_certificate)
         berms.supporting_documents.click_btn_save_proceed()
@@ -287,4 +280,6 @@ class TestSuiteBERMS001():
         berms.application_submission.click_btn_submission_proceed_confirm()
 
         # page = self.driver
-        # page.wait_for_timeout(120000)
+        # page.wait_for_timeout(60000)
+
+

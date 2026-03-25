@@ -733,7 +733,6 @@ class BermsPageInitialProjectCost(FrameWorkPWDriver):
         self.txt_project_loans = ["get_by_location_fill_c", "[name='fund_source[3][amount]']", "xxx"]
         self.btn_save_proceed = ["get_by_role_name", "button", "Save and Proceed"]
 
-
     def input_txt_construction_renovation(self, get_data):
         data_processed = self.utility_f.add_data_in_array(self.txt_construction_renovation, get_data)
         self.fw_execute_test_suites(data_processed)
@@ -794,7 +793,7 @@ class BermsPageSupportingDocuments(FrameWorkPWDriver):
         super().__init__(driver)
         self.utility_f = UtilityPackage()
         self.add_notarized_affidavit_of_option = ["get_by_file_chooser", "#dropzoneInnernao10",r"xxx"]
-        self.add_notarized_sercretarys_certificate_anti_graft = ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"xxx"]
+        self.add_notarized_secretarys_certificate_anti_graft = ["get_by_file_chooser", "#dropzoneInnersc_agraft9",r"xxx"]
         self.add_notarized_applicants_undertaking = ["get_by_file_chooser", "#dropzoneInnerund8",r"xxx"]
         self.add_by_laws_indicating_purpose_etc = ["get_by_file_chooser", "#dropzoneInnerby_law7", r"xxx"]
         self.add_articles_of_incorporation= ["get_by_file_chooser", "#dropzoneInneraoi6", r"xxx"]
@@ -804,14 +803,78 @@ class BermsPageSupportingDocuments(FrameWorkPWDriver):
         self.add_company_profile_of_parent_comp = ["get_by_file_chooser", "#dropzoneInnercppc2", r"xxx"]
         self.add_resume_of_principal_officers = ["get_by_file_chooser", "#dropzoneInnerrbpo1", r"xxx"]
         self.add_sec_certificate = ["get_by_file_chooser", "#dropzoneInnercrsec0", r"xxx"]
+        self.add_site_development_plan_and_vicinity_map = ["get_by_file_chooser", "#dropzoneInnerSDPVM12", r"xxx"]
+        self.add_notarized_affidavit_of_option_1 = ["get_by_file_chooser", "#dropzoneInnernao11", r"Txxx"]
+        self.add_proof_of_land_ownership_or_any_document = ["get_by_file_chooser", "#dropzoneInnerplo10", r"xxx"]
+        self.add_list_of_goods_handled = ["get_by_file_chooser", "#dropzoneInnerlgh10", r"xxx"]
+        self.add_certification_from_the_national = ["get_by_file_chooser", "#dropzoneInnerCN18", r"xxx"]
+        self.add_endorsement_from_doe = ["get_by_file_chooser", "#dropzoneInnerFEDOE17", r"xxx"]
+        self.add_endorsement_from_local_water_district = ["get_by_file_chooser", "#dropzoneInnerFELWD16", r"xxx"]
+        self.add_site_development_plan_and_vicinity_map_1 = ["get_by_file_chooser", "#dropzoneInnerSDPVM15", r"xxx"]
+        self.add_operation_plan_including_capacity_plan = ["get_by_file_chooser", "#dropzoneInnerCOP14", r"xxx"]
+        self.add_drawing_layout_support_structure_arrangement = ["get_by_file_chooser", "#dropzoneInnerSSA13", r"xxx"]
+        self.add_notarized_affidavit_of_option_2 = ["get_by_file_chooser", "#dropzoneInnernao12", r"xxx"]
+        self.add_certification_from_national_water_resources_board = ["get_by_file_chooser", "#dropzoneInnernwrc11", r"xxx"]
         self.btn_save_proceed = ["get_by_role_name", "button", "Save and Proceed"]
+
+    def file_add_notarized_affidavit_of_option_2(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_notarized_affidavit_of_option_2, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_certification_from_national_water_resources_board(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_certification_from_national_water_resources_board, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_drawing_layout_support_structure_arrangement(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_drawing_layout_support_structure_arrangement, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_site_development_plan_and_vicinity_map_1(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_site_development_plan_and_vicinity_map_1, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_operation_plan_including_capacity_plan(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_operation_plan_including_capacity_plan, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    # def file_add_drawing_layout_support_structure_arrangement(self, get_data):
+    #     data_processed = self.utility_f.add_data_in_array(self.add_drawing_layout_support_structure_arrangement, get_data)
+    #     self.fw_execute_test_suites(data_processed)
+
+    def file_add_certification_from_the_national(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_certification_from_the_national, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_endorsement_from_doe(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_endorsement_from_doe, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_endorsement_from_local_water_district(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_endorsement_from_local_water_district, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_list_of_goods_handled(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_list_of_goods_handled, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_site_development_plan_and_vicinity_map(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_site_development_plan_and_vicinity_map, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_notarized_affidavit_of_option_1(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_notarized_affidavit_of_option_1, get_data)
+        self.fw_execute_test_suites(data_processed)
+
+    def file_add_proof_of_land_ownership_or_any_document(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_proof_of_land_ownership_or_any_document, get_data)
+        self.fw_execute_test_suites(data_processed)
 
     def file_add_notarized_affidavit_of_option(self, get_data):
         data_processed = self.utility_f.add_data_in_array(self.add_notarized_affidavit_of_option, get_data)
         self.fw_execute_test_suites(data_processed)
 
-    def file_add_notarized_sercretarys_certificate_anti_graft(self, get_data):
-        data_processed = self.utility_f.add_data_in_array(self.add_notarized_sercretarys_certificate_anti_graft, get_data)
+    def file_add_notarized_secretarys_certificate_anti_graft(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_notarized_secretarys_certificate_anti_graft, get_data)
         self.fw_execute_test_suites(data_processed)
 
     def file_add_notarized_applicants_undertaking(self, get_data):

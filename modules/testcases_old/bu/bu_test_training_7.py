@@ -256,8 +256,6 @@ class TestSuite0001():
         }
         self.initiate_test_data().data_processing_func_peza(data_element_action)
 
-
-
     def test_create_new_berms_supporting_documents_1(self) -> None:
         data_element_action = {
             "add_supporing_documents": ["get_by_file_chooser", "#dropzoneInnerby_law7",r"Testing_document.png"],
