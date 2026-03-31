@@ -1,6 +1,6 @@
 import pytest
 import re
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Playwright, sync_playwright, expect, Locator, Page
 from pathlib import Path
 from modules.frame_work.utility.utility_package import UtilityPackage
 
@@ -284,3 +284,40 @@ class FrameWorkPWDriver:
             });
         }
         """, [selector, file_name, file_path])
+
+    def dropdown_select_option(self, locator, option: str):
+        self.driver.wait_for_timeout(3000)
+        expect(locator).to_be_visible()
+        # Wait for the element to be stable before clicking
+        locator.click()
+
+        # Use a more reliable way to find the option in a Select2 dropdown or similar
+        option_locator = self.driver.get_by_role("option", name=option)
+        expect(option_locator).to_be_visible()
+        option_locator.click()
+
+    def rdbox_select_option(self, option: str):
+        option_locator = self.driver.get_by_role("radio", name=option)
+        expect(option_locator).to_be_visible()
+        option_locator.check()
+
+    # upload images (self.driver = page)
+    def get_file_upload(self, locator: Locator, file_path: str):
+        # Find the file input element within the dropzone container
+        # Dropzone divs typically contain a hidden input[type=file]
+
+        with self.page.expect_file_chooser() as fc_info:
+            locator.click()
+            file_chooser = fc_info.value
+            file_chooser.set_files(file_path)
+            self.page.wait_for_timeout(2000)
+
+    # def rdbox_select_option(self, option: str):
+    #     option_locator = self.page.get_by_role("radio", name=option)
+    #     option_locator.check()
+
+    def text_fill(self, locator: Locator, text: str, blur: bool = False):
+        locator.scroll_into_view_if_needed()
+        locator.fill(text)
+        if blur:
+            locator.press("Tab")

@@ -477,6 +477,7 @@ class DataSetCompilationBERMS:
         self.ds_test_berms_ts005 = self.get_test_berms_ts005()
         self.ds_test_berms_ts005 = self.get_test_berms_ts005()
         self.ds_test_berms_ts006 = self.get_test_berms_ts006()
+        self.ds_test_berms_ts007 = self.get_test_berms_ts007()
 
     def get_test_berms_ts001(self):
         data_set = {
@@ -640,7 +641,9 @@ class DataSetCompilationBERMS:
                 "Drawing_layout_support_structure_arrangement": r"",
 
                 "Notarized_affidavit_of_option_2": r"",
-                "Certification_from_national_water_resources_board": r""
+                "Certification_from_national_water_resources_board": r"",
+                "Endorsement_dot_and_doh": r""
+
             }
 
         }
@@ -808,7 +811,8 @@ class DataSetCompilationBERMS:
                 "Drawing_layout_support_structure_arrangement": r"",
 
                 "Notarized_affidavit_of_option_2": r"",
-                "Certification_from_national_water_resources_board": r""
+                "Certification_from_national_water_resources_board": r"",
+                "Endorsement_dot_and_doh": r""
 
             }
 
@@ -978,7 +982,9 @@ class DataSetCompilationBERMS:
                 "Drawing_layout_support_structure_arrangement": r"",
 
                 "Notarized_affidavit_of_option_2": r"",
-                "Certification_from_national_water_resources_board": r""
+                "Certification_from_national_water_resources_board": r"",
+                "Endorsement_dot_and_doh": r""
+
             }
 
         }
@@ -1148,7 +1154,9 @@ class DataSetCompilationBERMS:
                 "Drawing_layout_support_structure_arrangement": r"",
 
                 "Notarized_affidavit_of_option_2": r"",
-                "Certification_from_national_water_resources_board": r""
+                "Certification_from_national_water_resources_board": r"",
+                "Endorsement_dot_and_doh": r""
+
             }
 
         }
@@ -1316,7 +1324,9 @@ class DataSetCompilationBERMS:
                 "Resume_of_principal_officers": r"Testing_document.png",
                 "SEC_certificate": r"Testing_document.png",
                 "Notarized_affidavit_of_option_2": r"Testing_document.png",
-                "Certification_from_national_water_resources_board": r"Testing_document.png"
+                "Certification_from_national_water_resources_board": r"Testing_document.png",
+                "Endorsement_dot_and_doh": r"Testing_document.png"
+
             }
 
         }
@@ -1484,7 +1494,177 @@ class DataSetCompilationBERMS:
                 "Resume_of_principal_officers": r"Testing_document.png",
                 "SEC_certificate": r"Testing_document.png",
                 "Notarized_affidavit_of_option_2": r"Testing_document.png",
-                "Certification_from_national_water_resources_board": r"Testing_document.png"
+                "Certification_from_national_water_resources_board": r"Testing_document.png",
+                "Endorsement_dot_and_doh": r"Testing_document.png"
+            }
+
+        }
+        return data_set
+
+    def get_test_berms_ts007(self):
+        data_set = {
+            "Login": {
+                "Link": "url",
+                "Username": "001",
+                "Password": "001"
+            },
+            "Application": {
+                "App_type": "NEW ECOZONE ENTERPRISE",
+                "Locator_type": "Tourism",
+                "Psic_class": "Accommodation and Food Service Activities",
+                "Psic_division": "[56] FOOD AND BEVERAGE SERVICE ACTIVITIES",
+                "Psic_div_group": "[563] Beverage serving activities",
+                "Psic_div_class": "[5630] Beverage serving activities",
+                "Psic_div_subclass": "[56309] Other beverage serving activities, n.e.c."
+            },
+            "Personal_information": {
+                "Company_name": "TOURISM COMPANY NAME TESTING ",
+                "Nature_business": "NATURE OF BUSINESS TOURISM TESTING ",
+                "Company_profile": "COMPANY PROFILE TOURISM TESTING ",
+            },
+            "Proposed_project": {
+                "Proposed_project": "NEW PRODUCT ACTIVITY TOURISM TESTING ",
+                "Proposed_project_desc": "DESCRIPTION TOURISM TESTING ",
+                "Proposed_project_desc_uses": "USES AND APPLICATION TOURISM TESTING ",
+                "Proposed_project_permit": r"Testing_document.png"
+            },
+            "Existing_business_reg": {
+                "Registration_date": "2016-01-11",
+                "Registration_no": "REG-2025-",
+                "Sec_primary_purpose": "SEC TOURISM PRIMARY PURPOSE",
+                "Authorized_amount": "99999999999",
+                "Subscribed_amount": "99999999999",
+                "Paid_up_amount": "99999999999"
+            },
+            "Stockholder_principal_officer": {
+                "Stockholder_type": "Corporate",
+                "Stockholder_name": "COMPANY NAME CORP",
+                "Stockholder_nationality": "Finnish",
+                "Stockholder_no_shares": "1280",
+                "Amount_subscribe": "1280",
+                "Amount_paid_up": "1280",
+                "Officer_salutation": "Mr.",
+                "Officer_fname": "PRNCIPAL FNAME",
+                "Officer_mname": "",
+                "Officer_lname":"PRINCIPAL LNAME",
+                "Officer_position": "PRESIDENT"
+            },
+            "Manpower_and_timetable": {
+                "Construction_start": "11/1/2028",
+                "Construction_end": "9/1/2030",
+                "Procurement_start": "2/1/2028",
+                "Procurement_end": "1/1/2030",
+                "Installation_start": "10/1/2028",
+                "Installation_end": "8/1/2030",
+                "Hiring_start": "12/1/2028",
+                "Hiring_end": "11/1/2030",
+                "Commercial_start": "2/1/2031",
+                "Manpower_01": {"Service": "10", "Indirect": "10", "Admin": "10"},
+                "Manpower_02": {"Service": "20", "Indirect": "20", "Admin": "100"},
+                "Manpower_03": {"Service": "100", "Indirect": "100", "Admin": "100"}
+            },
+            "Manufacturing_service_flow": {
+                "Manufacturing_name": "MANUFACTURING PROCESS SERVICE FLOW TESTING",
+                "Process_flow_diagram": r"Testing_document.png"
+            },
+            "Raw_materials_machinery_prod": {
+                "Machinery": {
+                    "Item_description": "DESCRIPTION 001",
+                    "Item_quantity": "100000",
+                    "Item_cost": "10",
+                    "Item_source": "IMPORTED",
+                    "Item_origin": "[DE] Germany"
+                },
+                "Raw_material": {
+                    "Item_description": "DESCRIPTION 001",
+                    "Item_source": "IMPORTED",
+                    "Item_origin": "[DE] Germany"
+                },
+                "Schedule_shifts": "3",
+                "Hours_shifts": "8",
+                "Per_month": "21"
+            },
+            "Areas_utilities_waste_disposal": {
+                "Owner_area": "5765",
+                "Location": "[2CYV] [24]7 PLAZA",
+                "Region": "NATIONAL CAPITAL REGION (NCR)",
+                "Province": "METRO MANILA",
+                "City": "CALOOCAN CITY",
+                "Barangay": "BARANGAY 1",
+                "Street": "STREET NAME TEST INPUT 001",
+                "Unitowner_fname": "UNIT OWNER FNAME",
+                "Unitowner_lname": "UNIT OWNER LNAME",
+                "Lotowner_fname": "LOT OWNER FNAME",
+                "Lotowner_lname": "LOT OWNER LNAME",
+                "Lessor_fname": "LESSOR FNAME",
+                "Lessor_lname": "LESSOR LNAME",
+                "Water_per_year": "100",
+                "Electricity_per_year": "999456",
+                "Disposal_description": "WASTE DISPOSAL DESCRIPTION",
+                "Disposal_method": "DISCUSSION OF METHODS",
+                "Waste_products": r"Testing_document.png",
+                "Generated_waste": r"Testing_document.png"
+            },
+            "Market_aspect": {
+                "Export_rate": "50%",
+                "Domestic_rate": "50%",
+                "Country_export": "[HM] Heard Island and McDonald Islands",
+                "Domestic_clients": "DOMESTIC CLIENTS",
+                "X_selling_price": "2354",
+                "D_selling_price": "4532",
+                "Uom": "[KGM] Kilogram",
+                "Export_vv0": "8888",
+                "Export_vv1": "8888",
+                "Export_vv2": "8888",
+                "Local_vv0": "7777",
+                "Local_vv1": "7777",
+                "Local_vv2": "7777",
+
+            },
+            "Initial_project_cost": {
+                "Construction_renovation": "10",
+                "Factory_tools": "25",
+                "Transportation_cost": "25",
+                "Office_equipment": "37",
+                "Other_assets": "1000",
+                "Operating_expenses": "28",
+                "Working_capital": "100",
+                "Project_equity": "1001000",
+                "Project_fund_source_1": "Foreign Loan",
+                "Project_add_equity": "100",
+                "Project_fund_source_2": "Local Loan",
+                "Project_advances": "100",
+                "Project_loans": "25"
+            },
+            "Supporting_documents": {
+                "Certification_from_the_national": r"Testing_document.png",
+                "Endorsement_from_doe": r"Testing_document.png",
+                "Endorsement_from_local_water_district": r"Testing_document.png",
+
+                "Site_development_plan_and_vicinity_map_1": r"Testing_document.png",
+                "Operation_plan_including_capacity_plan": r"Testing_document.png",
+                "Drawing_layout_support_structure_arrangement": r"Testing_document.png",
+
+                "Notarized_affidavit_of_option_1": r"Testing_document.png",
+                "List_of_goods_handled": r"Testing_document.png",
+                "Notarized_secretarys_certificate_anti_graft": r"Testing_document.png",
+
+                "Site_development_plan_and_vicinity_map": r"Testing_document.png",
+                "Proof_of_land_ownership_or_any_document": r"Testing_document.png",
+                "Notarized_applicants_undertaking": r"Testing_document.png",
+
+                "By_laws_indicating_purpose_etc": r"Testing_document.png",
+                "Notarized_affidavit_of_option": r"Testing_document.png",
+                "Articles_of_incorporation": r"Testing_document.png",
+                "General_information_sheet": r"Testing_document.png",
+                "20_year_projected_fin_statement": r"Testing_document.xlsx",
+                "BIR_form_2303": r"Testing_document.png",
+                "Company_profile_of_parent_comp": r"Testing_document.png",
+                "Resume_of_principal_officers": r"Testing_document.png",
+                "SEC_certificate": r"Testing_document.png",
+                "Notarized_affidavit_of_option_2": r"Testing_document.png",
+                "Certification_from_national_water_resources_board": r"Testing_document.png",
+                "Endorsement_dot_and_doh": r"Testing_document.png"
             }
 
         }

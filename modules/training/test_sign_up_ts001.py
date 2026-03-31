@@ -64,5 +64,5 @@ class TestSignUpTestSuite0001:
         test_page_objects.registration_account_info_pword_c(reg_data_obj.input_user_creds_pword_c)
 
         page = self.driver
-        page.wait_for_timeout(10000)
+        page.wait_for_timeout(120000)
 

@@ -22,6 +22,7 @@ jobs:
           pip install -e .
           pip install pytest-playwright
           pip install pytest-playwright playwright -U
+          pip install playwright pytest allure-pytest
           playwright install
           playwright install --with-deps
 

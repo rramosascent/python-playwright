@@ -38,7 +38,7 @@ class PtopsIpXml(FrameWorkPWDriver):
 
         url = 'http://192.168.20.26:82/peza/api/v1/auth'
         username = 'cdec@dmin_J5!X3kL'
-        password = 'Password_123'
+        password = '7892@!!B2!00853'
 
         response = requests.post(url, auth=HTTPBasicAuth(username, password))
 
@@ -49,7 +49,7 @@ class PtopsIpXml(FrameWorkPWDriver):
 
         counter_num = self.get_counter_reference()
 
-        url = 'http://192.168.20.25:82/peza/api/v1/importPermits'
+        url = 'http://192.168.20.26:82/peza/api/v1/importPermits'
 
         bearer_token = self.get_vasp_api_key()
 
@@ -96,7 +96,7 @@ class PtopsIpXml(FrameWorkPWDriver):
             "Items": [
                 {
                     "Id": [
-                        "TII10775-13850-1584203"
+                        "TII10775-62640-422889"
                     ],
                     "Description": "PC 8608.0020.000 I-0004",
                     "Uom": "OT",
@@ -109,7 +109,7 @@ class PtopsIpXml(FrameWorkPWDriver):
                 },
                 {
                     "Id": [
-                        "TII10775-13850-1584204"
+                        "TII10775-15282-1613862"
                     ],
                     "Description": "PC 8608.0020.000 I-0004",
                     "Uom": "OT",

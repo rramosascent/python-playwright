@@ -815,7 +815,12 @@ class BermsPageSupportingDocuments(FrameWorkPWDriver):
         self.add_drawing_layout_support_structure_arrangement = ["get_by_file_chooser", "#dropzoneInnerSSA13", r"xxx"]
         self.add_notarized_affidavit_of_option_2 = ["get_by_file_chooser", "#dropzoneInnernao12", r"xxx"]
         self.add_certification_from_national_water_resources_board = ["get_by_file_chooser", "#dropzoneInnernwrc11", r"xxx"]
+        self.add_endorsement_dot_and_doh= ["get_by_file_chooser", "#dropzoneInneredt_dh10", r"Testing_document.png"]
         self.btn_save_proceed = ["get_by_role_name", "button", "Save and Proceed"]
+
+    def file_add_endorsement_dot_and_doh(self, get_data):
+        data_processed = self.utility_f.add_data_in_array(self.add_endorsement_dot_and_doh, get_data)
+        self.fw_execute_test_suites(data_processed)
 
     def file_add_notarized_affidavit_of_option_2(self, get_data):
         data_processed = self.utility_f.add_data_in_array(self.add_notarized_affidavit_of_option_2, get_data)

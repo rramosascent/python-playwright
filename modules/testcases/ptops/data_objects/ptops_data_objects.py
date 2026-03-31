@@ -701,4 +701,5 @@ class DataObjectBERMSSupportingDocuments:
         self.drawing_layout_support_structure_arrangement = self.data_object["Drawing_layout_support_structure_arrangement"]
         self.notarized_affidavit_of_option_2 = self.data_object["Notarized_affidavit_of_option_2"]
         self.certification_from_national_water_resources_board = self.data_object["Certification_from_national_water_resources_board"]
+        self.endorsement_dot_and_doh = self.data_object["Endorsement_dot_and_doh"]
 
