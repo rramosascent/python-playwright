@@ -1,5 +1,6 @@
 # Main application dependencies
 requests
 openpyxl
+loguru
 
 # Development and testing dependencies

@@ -1,0 +1,3 @@
+2026-04-01 17:53:57 | INFO | Logging system initialized.
+2026-04-01 17:53:58 | INFO | Starting test: test_send_api_ip
+2026-04-01 17:54:01 | INFO | Finished test: test_send_api_ip
