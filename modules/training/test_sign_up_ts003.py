@@ -18,7 +18,7 @@ class TestSignUpTestSuite0001:
         print("after the test runs")
         # self.driver.wait_for_timeout(10000)
     def test_open_ptops_url_link_create_account(self):
-        test_page_objects.open_url_ptops("http://192.168.20.25:82/peza/login")
+        test_page_objects.open_url_ptops("http://112.199.119.250:96/peza/login")
         test_page_objects.landing_link_create_account()
 
     def test_select_registration_type(self):

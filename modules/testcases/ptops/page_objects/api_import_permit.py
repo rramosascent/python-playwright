@@ -36,9 +36,10 @@ class PtopsIpXml(FrameWorkPWDriver):
         return padded_entry_num
     def get_vasp_api_key(self):
 
-        url = 'http://192.168.20.26:82/peza/api/v1/auth'
+        # url = 'http://192.168.20.26:82/peza/api/v1/auth'
+        url = 'http://112.199.119.250:96/peza/api/v1/auth'
         username = 'cdec@dmin_J5!X3kL'
-        password = '7892@!!B2!00853'
+        password = 'password'
 
         response = requests.post(url, auth=HTTPBasicAuth(username, password))
 
@@ -49,8 +50,8 @@ class PtopsIpXml(FrameWorkPWDriver):
 
         counter_num = self.get_counter_reference()
 
-        url = 'http://192.168.20.26:82/peza/api/v1/importPermits'
-
+        # url = 'http://192.168.20.26:82/peza/api/v1/importPermits'
+        url = 'http://112.199.119.250:96/peza/api/v1/importPermits'
         bearer_token = self.get_vasp_api_key()
 
         headers = {
